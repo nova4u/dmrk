@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/future/image";
 import {
   Wrapper,
   Logotype,
@@ -63,19 +62,7 @@ export const Docs: NextPage = () => {
   return (
     <Wrapper className="py-14 relative overflow-hidden">
       <Seo />
-      <Logotype>
-        <div className="w-auto relative">
-          <Image
-            className="object-cover  w-10 h-10 rounded-full border border-emerald-500"
-            src={"/dmrk.jpg"}
-            alt="Denis Marushchak photo"
-            quality={100}
-            width={128}
-            height={128}
-          />
-          <span className="w-3 h-3 bg-emerald-500 absolute top-0 right-0 rounded-full border border-neutral-900"></span>
-        </div>
-      </Logotype>
+      <Logotype></Logotype>
       <svg
         width="527"
         height="430"
