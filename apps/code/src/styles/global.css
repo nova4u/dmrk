@@ -1,8 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body,
+html {
+  @apply overflow-x-hidden;
+}
+
+@layer utilities {
+  .outline {
+    all: unset;
+    @apply px-4 py-2 font-medium hover:brightness-125 transition ease-out text-emerald-400 hover:shadow-none rounded-md shadow-primary;
+    background: linear-gradient(
+          theme(colors.neutral.800),
+          theme(colors.neutral.800)
+        )
+        padding-box,
+      linear-gradient(
+          259.31deg,
+          #0c6449 0%,
+          #66efc2 19.84%,
+          #059669 47.95%,
+          #66efc2 75.55%,
+          #059669 96.35%
+        )
+        border-box;
+    border: 2px solid transparent;
+  }
+}
+
 body {
-  @apply antialiased bg-neutral-100;
+  @apply antialiased min-h-screen;
+  background: linear-gradient(180deg, #1d2c27 0%, #171717 100%) no-repeat;
 }
 
 @font-face {
