@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+  @apply antialiased bg-neutral-100;
+}
+
+@font-face {
+  font-family: "Manrope var";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/manrope-var.woff2") format("woff2") tech("variants"),
+    url("/manrope-var.woff2") format("woff2-variations");
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/JetBrainsMono.woff2") format("woff2") tech("variants"),
+    url("/JetBrainsMono.woff2") format("woff2-variations");
+}

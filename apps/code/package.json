@@ -1,0 +1,31 @@
+{
+  "name": "code-screenshot-generator",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port 3001",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@dmrk/ui": "workspace:*",
+    "next": "12.3.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@dmrk/eslint-config-custom": "workspace:*",
+    "@dmrk/tsconfig": "workspace:*",
+    "@dmrk/config": "workspace:*",
+    "@types/node": "^17.0.12",
+    "@types/react": "18.0.17",
+    "autoprefixer": "^10.4.12",
+    "eslint": "7.32.0",
+    "next-transpile-modules": "9.0.0",
+    "postcss": "^8.4.16",
+    "tailwindcss": "^3.1.8",
+    "typescript": "^4.5.3"
+  }
+}
