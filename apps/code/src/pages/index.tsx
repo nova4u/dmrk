@@ -24,6 +24,7 @@ export const Docs: NextPage = () => {
   const [language, setLanguage] = React.useState<string>(languages[1]);
   const [font, setFont] = React.useState<number>(0);
   const [fontSize, setFontSize] = React.useState<string>(fontSizes[2]);
+  const codeRef = React.useRef<HTMLDivElement>(null);
 
   const handleExport = React.useCallback(() => {
     console.log("Start exporting...");
@@ -130,6 +131,7 @@ export const Docs: NextPage = () => {
       </svg>
       <Typography as="h1">{headlines[0]}</Typography>
       <CodeEditor
+        ref={codeRef}
         language={language}
         font={fontFamily[font]}
         fontSize={fontSize}
