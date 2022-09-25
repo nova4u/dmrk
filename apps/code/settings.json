@@ -1,0 +1,23 @@
+{
+  "languages": [
+    "JavaScript",
+    "TypeScript",
+    "CSS",
+    "HTML",
+    "Rust",
+    "GOLang",
+    "Dart",
+    "Swift",
+    "C#",
+    "C++"
+  ],
+  "headlines": [
+    "Make your code pop!",
+    "Code has never been sexier",
+    "Sometimes even code need some makeup",
+    "Sharing your code has never been easier",
+    "Even code wants to be pretty"
+  ],
+  "fontFamily": ["JetBrains Mono", "Manrope var"],
+  "fontSizes": ["12px", "14px", "16px", "18px"]
+}
