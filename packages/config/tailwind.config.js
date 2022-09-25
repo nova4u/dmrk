@@ -1,5 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-// @ts-nocheck
 const plugin = require("tailwindcss/plugin");
 const { fontFamily } = require("tailwindcss/defaultTheme");
 
