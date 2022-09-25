@@ -1,4 +1,6 @@
 import React from "react";
+import Head from "next/head";
+import { NextPage } from "next";
 import {
   Wrapper,
   Logotype,
@@ -8,52 +10,20 @@ import {
   Typography,
   Button,
 } from "@dmrk/ui";
-import Head from "next/head";
 import { Settings, Text } from "@dmrk/ui/icons";
-import { CodeEditor } from "@components/index";
-import { NextPage } from "next";
-
-const options = [
-  "JavaScript",
-  "TypeScript",
-  "Rust",
-  "GOLang",
-  "Dart",
-  "Swift",
-  "C#",
-  "C++",
-  "JavaScript",
-  "TypeScript",
-  "Rust",
-  "GOLang",
-  "Dart",
-  "Swift",
-  "C#",
-  "C++",
-  "JavaScript",
-  "TypeScript",
-  "Rust",
-  "GOLang",
-  "Dart",
-  "Swift",
-  "C#",
-  "C++",
-];
-
-const headlines = [
-  "Make your code pop!",
-  "Code has never been sexier",
-  "Sometimes even code need some makeup",
-  "Sharing your code has never been easier",
-  "Even code wants to be pretty",
-];
-
-const fonts = ["Roboto", "JetBrains Mono"];
+import { CodeEditor } from "../components/";
+import {
+  languages,
+  fontFamily,
+  fontSizes,
+  headlines,
+} from "../../settings.json";
 
 export const Docs: NextPage = () => {
   const [noise, setNoise] = React.useState(false);
-  const [language, setLanguage] = React.useState<string>(options[0]);
+  const [language, setLanguage] = React.useState<string>(languages[1]);
   const [font, setFont] = React.useState<number>(0);
+  const [fontSize, setFontSize] = React.useState<string>(fontSizes[2]);
 
   const handleExport = React.useCallback(() => {
     console.log("Start exporting...");
@@ -159,19 +129,23 @@ export const Docs: NextPage = () => {
         </defs>
       </svg>
       <Typography as="h1">{headlines[0]}</Typography>
-      <Typography as="p">Language: {language}</Typography>
-      <Typography as="p">Font: {fonts[font]}</Typography>
-      <CodeEditor />
+      <CodeEditor
+        language={language}
+        font={fontFamily[font]}
+        fontSize={fontSize}
+        noise={noise}
+        className="max-w-2xl mt-10 mx-auto"
+      />
       <Panel className="mt-20 fixed max-w-screen-2xl text-neutral-100 justify-between">
         <div className="flex gap-6 flex-wrap">
           <Switch label={"Noise"} checked={noise} setChecked={setNoise} />
           <Menu
-            active={options.findIndex((option) => option === language)}
-            onSelect={(i) => setLanguage(options[i])}
+            active={languages.findIndex((option) => option === language)}
+            onSelect={(i) => setLanguage(languages[i])}
             closeOnClick
             showLabel
             icon={<Settings className="w-5 h-5 mr-2 flex-shrink-0" />}
-            options={options}
+            options={languages}
             size="md"
           />
           <Menu
@@ -179,8 +153,17 @@ export const Docs: NextPage = () => {
             onSelect={(i) => setFont(i)}
             closeOnClick
             showLabel={false}
-            options={fonts}
+            options={fontFamily}
             icon={<Text className="w-5 h-5 mr-2 flex-shrink-0" />}
+            size="auto"
+          />
+          <Menu
+            active={fontSizes.findIndex((option) => option === fontSize)}
+            onSelect={(i) => setFontSize(fontSizes[i])}
+            closeOnClick
+            showLabel={true}
+            options={fontSizes}
+            // icon={<Text className="w-5 h-5 mr-2 flex-shrink-0" />}
             size="auto"
           />
         </div>
