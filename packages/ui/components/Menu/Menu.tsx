@@ -55,7 +55,6 @@ const Menu: FC<MenuProps> = ({
   const setIsOpen = (v: boolean) => controller?.setOpen(v) || setOpen(v);
 
   const isOpen = controller ? controller.open : open;
-  console.log(isOpen);
 
   const handleClick = (i: number) => {
     if (closeOnClick) setIsOpen(false);
