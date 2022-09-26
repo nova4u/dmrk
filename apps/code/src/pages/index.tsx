@@ -12,12 +12,10 @@ import {
 } from "@dmrk/ui";
 import { Settings, Text } from "@dmrk/ui/icons";
 import { CodeEditor } from "../components/";
-import {
-  languages,
-  fontFamily,
-  fontSizes,
-  headlines,
-} from "../../settings.json";
+import CodeSettings from "../../settings.json";
+import ImageConverter from "@lib/ImageConverter";
+
+const { languages, fontFamily, fontSizes, headlines } = CodeSettings;
 
 export const Docs: NextPage = () => {
   const [noise, setNoise] = React.useState(false);
@@ -26,8 +24,40 @@ export const Docs: NextPage = () => {
   const [fontSize, setFontSize] = React.useState<string>(fontSizes[2]);
   const codeRef = React.useRef<HTMLDivElement>(null);
 
-  const handleExport = React.useCallback(() => {
-    console.log("Start exporting...");
+  const downloadAsPng = React.useCallback(() => {
+    if (!codeRef.current) return;
+    ImageConverter.generate(
+      {
+        format: "png",
+        download: true,
+        copyToClipboard: false,
+      },
+      codeRef.current
+    );
+  }, []);
+
+  const copyToClipboard = React.useCallback(() => {
+    if (!codeRef.current) return;
+    ImageConverter.generate(
+      {
+        format: "png",
+        download: false,
+        copyToClipboard: true,
+      },
+      codeRef.current
+    );
+  }, []);
+
+  const downloadAsSvg = React.useCallback(() => {
+    if (!codeRef.current) return;
+    ImageConverter.generate(
+      {
+        format: "svg",
+        download: true,
+        copyToClipboard: false,
+      },
+      codeRef.current
+    );
   }, []);
 
   return (
@@ -129,7 +159,9 @@ export const Docs: NextPage = () => {
           </filter>
         </defs>
       </svg>
-      <Typography as="h1">{headlines[0]}</Typography>
+      <Typography className="mb-20" as="h1">
+        {headlines[0]}
+      </Typography>
       <CodeEditor
         ref={codeRef}
         language={language}
