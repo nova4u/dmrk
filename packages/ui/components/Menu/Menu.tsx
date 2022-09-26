@@ -16,7 +16,7 @@ type CustomElProps = {
 
 interface MenuProps {
   closeOnClick?: boolean;
-  onSelect: (index: number) => void;
+  onSelect?: (index: number) => void;
   active?: number;
   openOnMouseOver?: boolean;
   options:
@@ -27,6 +27,11 @@ interface MenuProps {
   className?: string;
   icon?: React.ReactNode;
   containerClasses?: string;
+  controller?: {
+    open: boolean;
+    setOpen: (open: boolean) => void;
+  };
+  onOpenAutoFocus?: (e: Event) => void;
   size?: "sm" | "md" | "lg" | "auto";
 }
 
@@ -41,20 +46,25 @@ const Menu: FC<MenuProps> = ({
   openOnMouseOver = false,
   label,
   icon,
+  onOpenAutoFocus,
+  controller,
   size = "auto",
 }) => {
   const [open, setOpen] = React.useState(false);
 
-  const closeMenu = () => setOpen(false);
+  const setIsOpen = (v: boolean) => controller?.setOpen(v) || setOpen(v);
+
+  const isOpen = controller ? controller.open : open;
+  console.log(isOpen);
 
   const handleClick = (i: number) => {
-    if (closeOnClick) closeMenu();
+    if (closeOnClick) setIsOpen(false);
     if (onSelect) onSelect(i);
   };
 
   return (
     <div className={containerClasses}>
-      <Popover.Root open={open} onOpenChange={(v) => setOpen(v)}>
+      <Popover.Root open={isOpen} onOpenChange={setIsOpen} modal={true}>
         <Popover.Trigger
           className={clsx(
             "border border-white/10 rounded-lg  leading-none py-1.5  px-2 flex items-center justify-between hocus:outline-none hocus:ring-1 hocus:ring-emerald-600 transition text-sm",
@@ -71,14 +81,14 @@ const Menu: FC<MenuProps> = ({
           {label ? (
             label({
               onMouseOver: () => {
-                if (openOnMouseOver) setOpen(true);
+                if (openOnMouseOver) setIsOpen(true);
               },
             })
           ) : (
             <>
               <div
                 className="flex items-center truncate  h-5"
-                onMouseOver={() => openOnMouseOver && setOpen(true)}
+                onMouseOver={() => openOnMouseOver && setIsOpen(true)}
               >
                 {icon ? icon : ""}
                 <span className="text-left truncate">
@@ -98,36 +108,44 @@ const Menu: FC<MenuProps> = ({
         <Popover.Anchor />
         <Popover.Portal>
           <Popover.Content
-            className="bg-neutral-800 border border-white/10 rounded-lg px-3 py-3  shadow-xl text-neutral-200   max-h-80 overflow-y-scroll w-max max-w-sm space-y-1 "
-            onMouseLeave={() => openOnMouseOver && setOpen(false)}
+            className={clsx(
+              "bg-neutral-800 border border-white/10 rounded-lg px-3 py-3  shadow-xl text-neutral-200   max-h-80 overflow-y-scroll w-max max-w-sm space-y-1",
+              {
+                hidden: options.length === 0,
+              }
+            )}
+            onMouseLeave={() => openOnMouseOver && setIsOpen(false)}
             side="top"
             sideOffset={54}
             align="center"
+            onOpenAutoFocus={onOpenAutoFocus}
+            onCloseAutoFocus={(e) => e.preventDefault()}
           >
-            {options.map((item, i) => {
-              if (typeof item === "string") {
-                return (
-                  <button
-                    className={clsx(
-                      "block text-left text-sm rounded-md font-semibold hocus:outline-none transition duration-75 px-3 py-1",
-                      active !== undefined && {
-                        "text-emerald-400 hocus:ring-emerald-600 hocus:ring-1":
-                          active === i,
-                        "text-neutral-500 hocus:text-white ": active !== i,
-                      }
-                    )}
-                    key={i}
-                    onClick={() => handleClick(i)}
-                  >
-                    {item}
-                  </button>
-                );
-              } else {
-                return item.el({
-                  key: i,
-                });
-              }
-            })}
+            {options.length &&
+              options?.map((item, i) => {
+                if (typeof item === "string") {
+                  return (
+                    <button
+                      className={clsx(
+                        "block text-left text-sm rounded-md font-semibold hocus:outline-none transition duration-75 px-3 py-1",
+                        active !== undefined && {
+                          "text-emerald-400 hocus:ring-emerald-600 hocus:ring-1":
+                            active === i,
+                          "text-neutral-500 hocus:text-white ": active !== i,
+                        }
+                      )}
+                      key={i}
+                      onClick={() => handleClick(i)}
+                    >
+                      {item}
+                    </button>
+                  );
+                } else {
+                  return item.el({
+                    key: i,
+                  });
+                }
+              })}
           </Popover.Content>
         </Popover.Portal>
       </Popover.Root>

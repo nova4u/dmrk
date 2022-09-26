@@ -1,4 +1,4 @@
-import React from "react";
+import React, { KeyboardEvent, useEffect } from "react";
 import Head from "next/head";
 import { NextPage } from "next";
 import {
@@ -18,11 +18,22 @@ import ImageConverter from "@lib/ImageConverter";
 const { languages, fontFamily, fontSizes, headlines } = CodeSettings;
 
 export const Docs: NextPage = () => {
+  const panelRef = React.useRef<HTMLDivElement>(null);
+  const [search, setSearch] = React.useState("");
+  const [isLangMenuOpen, setIsLangMenuOpen] = React.useState(false);
   const [noise, setNoise] = React.useState(false);
-  const [language, setLanguage] = React.useState<string>(languages[1]);
+  const [language, setLanguage] = React.useState<string>(`TSX`);
   const [font, setFont] = React.useState<number>(0);
   const [fontSize, setFontSize] = React.useState<string>(fontSizes[2]);
   const codeRef = React.useRef<HTMLDivElement>(null);
+
+  const filteredLanguageList = React.useMemo(
+    () =>
+      languages.filter((lang) =>
+        lang.toLowerCase().includes(search.toLowerCase())
+      ),
+    [search]
+  );
 
   const downloadAsPng = React.useCallback(() => {
     if (!codeRef.current) return;
@@ -60,10 +71,24 @@ export const Docs: NextPage = () => {
     );
   }, []);
 
+  const handleSearchKeyDown = (e: KeyboardEvent) => {
+    const isFilteredToSingle = filteredLanguageList.length === 1;
+
+    if (e.code === "Enter" && isFilteredToSingle) {
+      setLanguage(filteredLanguageList[0]);
+      const target = e.target as HTMLInputElement;
+      target.blur();
+      setIsLangMenuOpen(false);
+      setSearch(filteredLanguageList[0]);
+    }
+  };
+
   return (
     <Wrapper className="py-14 relative overflow-hidden">
       <Seo />
       <Logotype></Logotype>
+      <button onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}>asd</button>
+      {language}
       <svg
         width="527"
         height="430"
@@ -162,6 +187,7 @@ export const Docs: NextPage = () => {
       <Typography className="mb-20" as="h1">
         {headlines[0]}
       </Typography>
+      {isLangMenuOpen ? "yes" : "no"}
       <CodeEditor
         ref={codeRef}
         language={language}
@@ -170,15 +196,39 @@ export const Docs: NextPage = () => {
         noise={noise}
         className="max-w-2xl mx-auto"
       />
-      <Panel className="mt-20 fixed max-w-screen-lg mx-auto  bg-neutral-800 rounded-lg border border-white/10 text-neutral-100 px-6  py-2.5 gap-6">
+      <Panel
+        className="mt-20 fixed max-w-screen-lg mx-auto  bg-neutral-800 rounded-lg border border-white/10 text-neutral-100 px-6  py-2.5 gap-6"
+        ref={panelRef}
+      >
         <Switch label={"Noise"} checked={noise} setChecked={setNoise} />
         <Menu
           active={languages.findIndex((option) => option === language)}
-          onSelect={(i) => setLanguage(languages[i])}
+          onSelect={(i) => {
+            setLanguage(languages[i]);
+          }}
           closeOnClick
           showLabel
+          onOpenAutoFocus={(e) => {
+            e.preventDefault();
+          }}
+          controller={{
+            open: isLangMenuOpen,
+            setOpen: setIsLangMenuOpen,
+          }}
+          label={(props) => (
+            <input
+              type="text"
+              placeholder={language}
+              className="bg-transparent placeholder:text-slate-100 focus:placeholder-transparent"
+              onChange={(e) => setSearch(e.target.value)}
+              onKeyDown={(e) => handleSearchKeyDown(e)}
+              onFocus={() => setSearch("")}
+              value={search}
+              {...props}
+            />
+          )}
           icon={<Settings className="w-5 h-5 mr-2 flex-shrink-0" />}
-          options={languages}
+          options={filteredLanguageList}
           size="md"
         />
         <Menu
@@ -201,9 +251,6 @@ export const Docs: NextPage = () => {
         />
         <Menu
           openOnMouseOver
-          onSelect={(i) => {
-            console.log(`triggered ${i}`);
-          }}
           containerClasses={`ml-auto`}
           className="ml-auto"
           showLabel={true}
@@ -217,7 +264,7 @@ export const Docs: NextPage = () => {
               el: (data) => (
                 <button
                   onClick={downloadAsSvg}
-                  className="py-1 px-3    rounded-md transition hover:text-emerald-500 block  hocus:outline-none "
+                  className="py-1 px-3    rounded-md transition hover:text-emerald-500 block  hocus:text-emerald-500 "
                   {...data}
                 >
                   Export as SVG
@@ -228,7 +275,7 @@ export const Docs: NextPage = () => {
               el: (data) => (
                 <button
                   onClick={downloadAsPng}
-                  className={`py-1 px-3   rounded-md transition hover:text-emerald-500 block  `}
+                  className={`py-1 px-3    rounded-md transition hover:text-emerald-500 block  hocus:text-emerald-500 `}
                   {...data}
                 >
                   Export as PNG
@@ -239,7 +286,7 @@ export const Docs: NextPage = () => {
               el: (data) => (
                 <button
                   onClick={copyToClipboard}
-                  className={`py-1 px-3    rounded-md transition hover:text-emerald-500 block  `}
+                  className={`py-1 px-3    rounded-md transition hover:text-emerald-500 block  hocus:text-emerald-500 `}
                   {...data}
                 >
                   Copy to Clipboard
