@@ -10,7 +10,7 @@ const Panel: FC<React.PropsWithChildren<PanelProps>> = ({
   return (
     <div
       className={clsx(
-        "bg-neutral-800 max-w-screen-2xl mx-auto rounded-lg border border-white/10 left-1/2 -translate-x-1/2 bottom-5 flex items-center px-6  flex-wrap py-2.5 gap-6",
+        "  left-1/2 -translate-x-1/2 bottom-10 flex items-center ",
         className
       )}
       style={{
