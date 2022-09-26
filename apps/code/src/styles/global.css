@@ -51,7 +51,7 @@ html {
   }
   .outline {
     all: unset;
-    @apply px-4 py-2 font-medium hover:brightness-125 transition ease-out text-emerald-400 hover:shadow-none rounded-md shadow-primary;
+    @apply px-4 py-1 font-medium hover:brightness-125 transition ease-out text-emerald-400 hover:shadow-none rounded-md shadow-primary;
     background: linear-gradient(
           theme(colors.neutral.800),
           theme(colors.neutral.800)

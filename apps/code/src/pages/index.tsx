@@ -168,42 +168,87 @@ export const Docs: NextPage = () => {
         font={fontFamily[font]}
         fontSize={fontSize}
         noise={noise}
-        className="max-w-2xl mt-10 mx-auto"
+        className="max-w-2xl mx-auto"
       />
-      <Panel className="mt-20 fixed max-w-screen-2xl text-neutral-100 justify-between">
-        <div className="flex gap-6 flex-wrap">
-          <Switch label={"Noise"} checked={noise} setChecked={setNoise} />
-          <Menu
-            active={languages.findIndex((option) => option === language)}
-            onSelect={(i) => setLanguage(languages[i])}
-            closeOnClick
-            showLabel
-            icon={<Settings className="w-5 h-5 mr-2 flex-shrink-0" />}
-            options={languages}
-            size="md"
-          />
-          <Menu
-            active={font}
-            onSelect={(i) => setFont(i)}
-            closeOnClick
-            showLabel={false}
-            options={fontFamily}
-            icon={<Text className="w-5 h-5 mr-2 flex-shrink-0" />}
-            size="auto"
-          />
-          <Menu
-            active={fontSizes.findIndex((option) => option === fontSize)}
-            onSelect={(i) => setFontSize(fontSizes[i])}
-            closeOnClick
-            showLabel={true}
-            options={fontSizes}
-            // icon={<Text className="w-5 h-5 mr-2 flex-shrink-0" />}
-            size="auto"
-          />
-        </div>
-        <Button variant="outline" onClick={handleExport} className="">
-          Export
-        </Button>
+      <Panel className="mt-20 fixed max-w-screen-lg mx-auto  bg-neutral-800 rounded-lg border border-white/10 text-neutral-100 px-6  py-2.5 gap-6">
+        <Switch label={"Noise"} checked={noise} setChecked={setNoise} />
+        <Menu
+          active={languages.findIndex((option) => option === language)}
+          onSelect={(i) => setLanguage(languages[i])}
+          closeOnClick
+          showLabel
+          icon={<Settings className="w-5 h-5 mr-2 flex-shrink-0" />}
+          options={languages}
+          size="md"
+        />
+        <Menu
+          active={font}
+          onSelect={(i) => setFont(i)}
+          closeOnClick
+          showLabel={true}
+          options={fontFamily}
+          icon={<Text className="w-5 h-5 mr-2 flex-shrink-0" />}
+          size="auto"
+        />
+        <Menu
+          active={fontSizes.findIndex((option) => option === fontSize)}
+          onSelect={(i) => setFontSize(fontSizes[i])}
+          closeOnClick
+          showLabel={true}
+          options={fontSizes}
+          // icon={<Text className="w-5 h-5 mr-2 flex-shrink-0" />}
+          size="auto"
+        />
+        <Menu
+          openOnMouseOver
+          onSelect={(i) => {
+            console.log(`triggered ${i}`);
+          }}
+          containerClasses={`ml-auto`}
+          className="ml-auto"
+          showLabel={true}
+          label={(props) => (
+            <Button variant="outline" className="" {...props}>
+              Export
+            </Button>
+          )}
+          options={[
+            {
+              el: (data) => (
+                <button
+                  onClick={downloadAsSvg}
+                  className="py-1 px-3    rounded-md transition hover:text-emerald-500 block  hocus:outline-none "
+                  {...data}
+                >
+                  Export as SVG
+                </button>
+              ),
+            },
+            {
+              el: (data) => (
+                <button
+                  onClick={downloadAsPng}
+                  className={`py-1 px-3   rounded-md transition hover:text-emerald-500 block  `}
+                  {...data}
+                >
+                  Export as PNG
+                </button>
+              ),
+            },
+            {
+              el: (data) => (
+                <button
+                  onClick={copyToClipboard}
+                  className={`py-1 px-3    rounded-md transition hover:text-emerald-500 block  `}
+                  {...data}
+                >
+                  Copy to Clipboard
+                </button>
+              ),
+            },
+          ]}
+          size="auto"
+        />
       </Panel>
     </Wrapper>
   );
@@ -213,6 +258,11 @@ const Seo: React.FC<{}> = () => {
   return (
     <Head>
       <title>Code ScreenShot Generator | @dmrk</title>
+      <meta
+        name="description"
+        content="Generate code screenshots on the fly."
+      />
+      <meta name="robots" content="follow, index" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
   );
