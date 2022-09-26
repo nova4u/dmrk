@@ -22,7 +22,7 @@ const Switch: FC<SwitchProps> = ({ label, checked, setChecked }) => {
       </SwitchPrimitive.Root>
       <label
         htmlFor="s1"
-        className="select-none leading-none text-neutral-50  ml-2"
+        className="select-none leading-none text-neutral-50  ml-2 text-sm"
       >
         {label}
       </label>
