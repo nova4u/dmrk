@@ -67,7 +67,7 @@ const Menu: FC<MenuProps> = ({
       <Popover.Root open={isOpen} onOpenChange={setIsOpen} modal={true}>
         <Popover.Trigger
           className={clsx(
-            "border border-white/10 rounded-lg  leading-none py-1.5  px-2 flex items-center justify-between hocus:outline-none hocus:ring-1 hocus:ring-emerald-600 transition text-sm",
+            "border border-white/10 rounded-lg  leading-none  h-9 px-2   flex items-center justify-between hocus:outline-none hocus:ring-1 hocus:ring-emerald-600 transition text-sm",
             className,
             {
               "w-28": size === "sm",
@@ -109,7 +109,7 @@ const Menu: FC<MenuProps> = ({
         <Popover.Portal>
           <Popover.Content
             className={clsx(
-              "bg-neutral-800 border border-white/10 rounded-lg px-3 py-3  shadow-xl text-neutral-200   max-h-80 overflow-y-scroll w-max max-w-sm space-y-1",
+              "bg-neutral-800 border border-white/10 rounded-lg px-3 py-3   shadow-xl text-neutral-200   max-h-80 overflow-y-scroll w-max max-w-sm space-y-1",
               {
                 hidden: options.length === 0,
               }
