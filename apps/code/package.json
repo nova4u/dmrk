@@ -10,19 +10,25 @@
   },
   "dependencies": {
     "@dmrk/ui": "workspace:*",
+    "@uiw/react-textarea-code-editor": "2.0.3",
+    "clsx": "^1.2.1",
     "next": "12.3.0",
+    "next-compose-plugins": "^2.2.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "uninstall": "^0.0.0",
+    "webpack": "^5.74.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
+    "@dmrk/config": "workspace:*",
     "@dmrk/eslint-config-custom": "workspace:*",
     "@dmrk/tsconfig": "workspace:*",
-    "@dmrk/config": "workspace:*",
     "@types/node": "^17.0.12",
     "@types/react": "18.0.17",
     "autoprefixer": "^10.4.12",
     "eslint": "7.32.0",
+    "next-remove-imports": "^1.0.7",
     "next-transpile-modules": "9.0.0",
     "postcss": "^8.4.16",
     "tailwindcss": "^3.1.8",

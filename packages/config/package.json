@@ -4,5 +4,8 @@
   "private": true,
   "files": [
     "tailwind.config.js"
-  ]
+  ],
+  "devDependencies": {
+    "tailwindcss": "^3.1.8"
+  }
 }
