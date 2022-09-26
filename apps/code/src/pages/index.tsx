@@ -87,8 +87,6 @@ export const Docs: NextPage = () => {
     <Wrapper className="py-14 relative overflow-hidden">
       <Seo />
       <Logotype></Logotype>
-      <button onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}>asd</button>
-      {language}
       <svg
         width="527"
         height="430"
@@ -187,7 +185,6 @@ export const Docs: NextPage = () => {
       <Typography className="mb-20" as="h1">
         {headlines[0]}
       </Typography>
-      {isLangMenuOpen ? "yes" : "no"}
       <CodeEditor
         ref={codeRef}
         language={language}
