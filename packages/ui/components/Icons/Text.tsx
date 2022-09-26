@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import React, { FC } from "react";
 
-interface TextProps extends React.SVGProps<React.ReactSVGElement> {}
+interface TextProps extends React.SVGProps<SVGSVGElement> {}
 
 const Text: FC<TextProps> = ({ className, ...rest }) => {
   return (

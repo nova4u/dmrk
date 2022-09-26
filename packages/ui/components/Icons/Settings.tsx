@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import React, { FC } from "react";
 
-interface SettingsProps extends React.SVGProps<React.ReactSVGElement> {}
+interface SettingsProps extends React.SVGProps<SVGSVGElement> {}
 
 const Settings: FC<SettingsProps> = ({ className, ...rest }) => {
   return (

@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import React, { FC } from "react";
 
-interface ChevronProps extends React.SVGProps<React.ReactSVGElement> {}
+interface ChevronProps extends React.SVGProps<SVGSVGElement> {}
 
 const Chevron: FC<ChevronProps> = ({ className, ...rest }) => {
   return (
