@@ -5,12 +5,10 @@ interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   variant: "primary" | "outline";
 }
 
-export const Button: React.FC<React.PropsWithChildren<ButtonProps>> = ({
-  children,
-  className,
-  variant = "primary",
-  ...rest
-}) => {
+export const Button = React.forwardRef<
+  HTMLButtonElement,
+  React.PropsWithChildren<ButtonProps>
+>(({ children, className, variant = "primary", ...rest }, ref) => {
   return (
     <button
       className={clsx(
@@ -23,10 +21,12 @@ export const Button: React.FC<React.PropsWithChildren<ButtonProps>> = ({
         className
       )}
       {...rest}
+      ref={ref}
     >
       {children}
     </button>
   );
-};
+});
 
+Button.displayName = "Button";
 export default Button;
