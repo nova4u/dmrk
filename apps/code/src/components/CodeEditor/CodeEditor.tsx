@@ -53,7 +53,7 @@ const CodeEditor = React.forwardRef<HTMLDivElement, CodeEditorProps>(
 
     return (
       <div
-        className="w-full bg-gradient-to-r from-emerald-600 to-green-600 py-14 mt-20 rounded-lg relative"
+        className="w-full bg-gradient-to-r from-emerald-600 to-green-600 py-14  rounded-lg relative overflow-hidden"
         ref={ref}
       >
         {noise && (
