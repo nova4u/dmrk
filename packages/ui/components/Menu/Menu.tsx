@@ -32,6 +32,7 @@ interface MenuProps {
     setOpen: (open: boolean) => void;
   };
   onOpenAutoFocus?: (e: Event) => void;
+  onCloseAutoFocus?: (e: Event) => void;
   size?: "sm" | "md" | "lg" | "auto";
 }
 
@@ -47,6 +48,7 @@ const Menu: FC<MenuProps> = ({
   label,
   icon,
   onOpenAutoFocus,
+  onCloseAutoFocus,
   controller,
   size = "auto",
 }) => {
@@ -118,7 +120,7 @@ const Menu: FC<MenuProps> = ({
             sideOffset={54}
             align="center"
             onOpenAutoFocus={onOpenAutoFocus}
-            onCloseAutoFocus={(e) => e.preventDefault()}
+            onCloseAutoFocus={onCloseAutoFocus}
           >
             {options.length &&
               options?.map((item, i) => {
