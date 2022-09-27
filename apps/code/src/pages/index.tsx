@@ -200,9 +200,11 @@ export const Docs: NextPage = () => {
         <Switch label={"Noise"} checked={noise} setChecked={setNoise} />
         <Menu
           active={languages.findIndex((option) => option === language)}
-          onSelect={(i) => {
-            setLanguage(languages[i]);
-            setSearch(languages[i]);
+          onSelect={(_, option) => {
+            const selectedOption = languages.find((item) => item === option);
+            if (!selectedOption) return;
+            setLanguage(selectedOption);
+            setSearch(selectedOption);
           }}
           closeOnClick
           showLabel

@@ -16,7 +16,7 @@ type CustomElProps = {
 
 interface MenuProps {
   closeOnClick?: boolean;
-  onSelect?: (index: number) => void;
+  onSelect?: (index: number, option: unknown) => void;
   active?: number;
   openOnMouseOver?: boolean;
   options:
@@ -58,9 +58,9 @@ const Menu: FC<MenuProps> = ({
 
   const isOpen = controller ? controller.open : open;
 
-  const handleClick = (i: number) => {
+  const handleClick = (i: number, option: MenuProps["options"][0]) => {
     if (closeOnClick) setIsOpen(false);
-    if (onSelect) onSelect(i);
+    if (onSelect) onSelect(i, option);
   };
 
   return (
@@ -136,7 +136,7 @@ const Menu: FC<MenuProps> = ({
                         }
                       )}
                       key={i}
-                      onClick={() => handleClick(i)}
+                      onClick={() => handleClick(i, item)}
                     >
                       {item}
                     </button>
