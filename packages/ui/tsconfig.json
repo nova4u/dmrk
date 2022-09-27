@@ -1,5 +1,5 @@
 {
   "extends": "@dmrk/tsconfig/react-library.json",
-  "include": ["image.d.ts"],
+  "include": ["index.d.ts"],
   "exclude": ["dist", "build", "node_modules"]
 }
