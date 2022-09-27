@@ -59,7 +59,7 @@ const CodeEditor = React.forwardRef<HTMLDivElement, CodeEditorProps>(
         <div
           className={clsx(
             className,
-            "bg-gradient-to-r rounded-lg from-emerald-600 to-green-600  w-full relative"
+            "bg-gradient-to-r rounded-lg from-emerald-600 to-green-600  w-full relative overflow-hidden"
           )}
           ref={ref}
         >
