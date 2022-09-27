@@ -73,7 +73,10 @@ export default class ImageConverter {
 
   private toSvgDataURI(): string {
     this.applyStyles(this.options.node, this.options.cloneNode);
-    this.options.node.setAttribute("xmlns", "http://www.w3.org/1999/xhtml");
+    this.options.cloneNode.setAttribute(
+      "xmlns",
+      "http://www.w3.org/1999/xhtml"
+    );
     const serializedNode = this.serializeNode(this.options.cloneNode);
     return `data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="${
       this.options.width

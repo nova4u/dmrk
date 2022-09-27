@@ -18,8 +18,11 @@ const EditorTheme: { [key: string]: string } = {
   "--color-prettylights-syntax-constant": colors.emerald[400],
   "--color-canvas-subtle": "rgba(23, 23, 23, 0.7)",
   "--color-fg-default": colors.slate[50],
-  "--color-prettylights-syntax-string": colors.slate[300],
-  "--color-prettylights-syntax-keyword": colors.cyan[500],
+  "--color-prettylights-syntax-comment": colors.gray[400],
+  "--color-prettylights-syntax-markup-bold": colors.violet[300],
+  "--color-prettylights-syntax-sublimelinter-gutter-mark": colors.cyan[500],
+  "--color-prettylights-syntax-string": colors.violet[400],
+  "--color-prettylights-syntax-keyword": colors.sky[400],
 };
 
 const CodeEditor = React.forwardRef<HTMLDivElement, CodeEditorProps>(
@@ -52,14 +55,17 @@ const CodeEditor = React.forwardRef<HTMLDivElement, CodeEditorProps>(
       );
 
     return (
-      <div
-        className="w-full bg-gradient-to-r from-emerald-600 to-green-600 py-14  rounded-lg relative overflow-hidden"
-        ref={ref}
-      >
-        {noise && (
-          <NoiseTexture className="absolute top-0 left-0 -z-0 w-full h-full opacity-40 bg-emerald-600 " />
-        )}
-        <div className={clsx(className)}>
+      <div className="w-auto relative mx-auto flex justify-center">
+        <div
+          className={clsx(
+            className,
+            "bg-gradient-to-r rounded-lg from-emerald-600 to-green-600  w-full"
+          )}
+          ref={ref}
+        >
+          {noise && (
+            <NoiseTexture className="absolute top-0 left-0 -z-0 w-full h-full opacity-40 bg-emerald-600 " />
+          )}
           <div
             className={clsx(
               "h-8 bg-neutral-900/70 rounded-tl-lg rounded-tr-lg grid grid-cols-[100px_1fr_100px]  items-center pl-4 relative"
