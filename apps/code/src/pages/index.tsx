@@ -194,7 +194,7 @@ export const Docs: NextPage = () => {
         className="p-6 max-w-2xl"
       />
       <Panel
-        className="mt-20 fixed max-w-screen-lg mx-auto  bg-neutral-800 rounded-lg border border-white/10 text-neutral-100 px-6  py-2.5 gap-6"
+        className="mt-20 fixed max-w-screen-lg mx-auto  bg-neutral-800 rounded-lg border border-white/10 text-neutral-100 px-6  py-2.5 gap-2 md:gap-6"
         ref={panelRef}
       >
         <Switch label={"Noise"} checked={noise} setChecked={setNoise} />
@@ -202,6 +202,7 @@ export const Docs: NextPage = () => {
           active={languages.findIndex((option) => option === language)}
           onSelect={(i) => {
             setLanguage(languages[i]);
+            setSearch(languages[i]);
           }}
           closeOnClick
           showLabel
