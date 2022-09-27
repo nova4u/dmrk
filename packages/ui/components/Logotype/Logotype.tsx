@@ -23,7 +23,7 @@ const Logotype: FC<LogotypeProps> = ({ textClassName, className, ...rest }) => {
       </div>
       <span
         className={clsx(
-          "font-mono ml-6 text-lg tracking-tight",
+          "font-mono ml-3 md:ml-6 text-md md:text-lg tracking-tight",
           {
             "text-emerald-50": !textClassName,
           },
