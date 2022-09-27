@@ -168,7 +168,7 @@ export const Docs: NextPage = () => {
         font={fontFamily[font]}
         fontSize={fontSize}
         noise={noise}
-        className="max-w-2xl mx-auto"
+        className="p-6 max-w-2xl"
       />
       <Panel className="mt-20 fixed max-w-screen-lg mx-auto  bg-neutral-800 rounded-lg border border-white/10 text-neutral-100 px-6  py-2.5 gap-6">
         <Switch label={"Noise"} checked={noise} setChecked={setNoise} />
