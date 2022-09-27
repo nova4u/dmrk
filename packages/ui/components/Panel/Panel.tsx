@@ -8,7 +8,7 @@ const Panel = React.forwardRef<HTMLDivElement, PanelProps>(
     return (
       <div
         className={clsx(
-          "  left-1/2 -translate-x-1/2 bottom-10 flex items-center ",
+          "  left-1/2 -translate-x-1/2 bottom-10 flex items-center flex-wrap ",
           className
         )}
         ref={ref}
