@@ -59,13 +59,14 @@ const CodeEditor = React.forwardRef<HTMLDivElement, CodeEditorProps>(
         <div
           className={clsx(
             className,
-            "bg-gradient-to-r rounded-lg from-emerald-600 to-green-600  w-full"
+            "bg-gradient-to-r rounded-lg from-emerald-600 to-green-600  w-full relative"
           )}
           ref={ref}
         >
           {noise && (
             <NoiseTexture className="absolute top-0 left-0 -z-0 w-full h-full opacity-40 bg-emerald-600 " />
           )}
+
           <div
             className={clsx(
               "h-8 bg-neutral-900/70 rounded-tl-lg rounded-tr-lg grid grid-cols-[100px_1fr_100px]  items-center pl-4 relative"
