@@ -3,12 +3,12 @@ import Head from "next/head";
 import { NextPage } from "next";
 import {
   Wrapper,
-  Logotype,
   Panel,
   Switch,
   Menu,
   Typography,
   Button,
+  Navbar,
 } from "@dmrk/ui";
 import { Settings, Text } from "@dmrk/ui/icons";
 import { CodeEditor } from "../components/";
@@ -86,102 +86,8 @@ export const Docs: NextPage = () => {
   return (
     <Wrapper className="py-14 relative overflow-hidden">
       <Seo />
-      <Logotype></Logotype>
-      <svg
-        width="527"
-        height="430"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="top-0 left-1/2 absolute -translate-x-1/2 animate-pulse"
-        style={{}}
-      >
-        <g opacity=".1" filter="url(#a)">
-          <circle cx="256.654" cy="172.81" r="70.609" fill="#10B981" />
-        </g>
-        <g opacity=".2" filter="url(#b)">
-          <circle cx="263.226" cy="166.959" r="148.9" fill="#10B981" />
-        </g>
-        <circle
-          opacity=".6"
-          cx="263.226"
-          cy="166.959"
-          r="148.389"
-          stroke="url(#c)"
-          strokeWidth="1.022"
-        />
-        <circle
-          opacity=".6"
-          cx="268"
-          cy="166.959"
-          r="184.02"
-          stroke="url(#d)"
-          strokeWidth="1.267"
-        />
-        <defs>
-          <linearGradient
-            id="c"
-            x1="263.226"
-            y1="18.058"
-            x2="263.226"
-            y2="315.859"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stopColor="#00FFAB" />
-            <stop offset="1" stopColor="#7C75EC" stopOpacity="0" />
-          </linearGradient>
-          <linearGradient
-            id="d"
-            x1="268"
-            y1="-17.695"
-            x2="268"
-            y2="351.612"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stopColor="#00FFAB" />
-            <stop offset="1" stopColor="#7C75EC" stopOpacity="0" />
-          </linearGradient>
-          <filter
-            id="a"
-            x="132.044"
-            y="48.201"
-            width="249.218"
-            height="249.218"
-            filterUnits="userSpaceOnUse"
-            colorInterpolationFilters="sRGB"
-          >
-            <feFlood floodOpacity="0" result="BackgroundImageFix" />
-            <feBlend
-              in="SourceGraphic"
-              in2="BackgroundImageFix"
-              result="shape"
-            />
-            <feGaussianBlur
-              stdDeviation="27"
-              result="effect1_foregroundBlur_27_138"
-            />
-          </filter>
-          <filter
-            id="b"
-            x=".45"
-            y="-95.817"
-            width="525.551"
-            height="525.551"
-            filterUnits="userSpaceOnUse"
-            colorInterpolationFilters="sRGB"
-          >
-            <feFlood floodOpacity="0" result="BackgroundImageFix" />
-            <feBlend
-              in="SourceGraphic"
-              in2="BackgroundImageFix"
-              result="shape"
-            />
-            <feGaussianBlur
-              stdDeviation="56.938"
-              result="effect1_foregroundBlur_27_138"
-            />
-          </filter>
-        </defs>
-      </svg>
+      <Navbar className="" />
+      <Circle className="top-0 left-1/2 absolute -translate-x-1/2 animate-pulse -z-10" />
       <Typography className="mb-20" as="h1">
         {headlines[0]}
       </Typography>
@@ -322,3 +228,97 @@ const Seo: React.FC<{}> = () => {
 };
 
 export default Docs;
+
+interface CircleProps extends React.SVGProps<SVGSVGElement> {}
+
+const Circle = ({ className, ...rest }: CircleProps) => {
+  return (
+    <svg
+      width="527"
+      height="430"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      {...rest}
+    >
+      <g opacity=".1" filter="url(#a)">
+        <circle cx="256.654" cy="172.81" r="70.609" fill="#10B981" />
+      </g>
+      <g opacity=".2" filter="url(#b)">
+        <circle cx="263.226" cy="166.959" r="148.9" fill="#10B981" />
+      </g>
+      <circle
+        opacity=".6"
+        cx="263.226"
+        cy="166.959"
+        r="148.389"
+        stroke="url(#c)"
+        strokeWidth="1.022"
+      />
+      <circle
+        opacity=".6"
+        cx="268"
+        cy="166.959"
+        r="184.02"
+        stroke="url(#d)"
+        strokeWidth="1.267"
+      />
+      <defs>
+        <linearGradient
+          id="c"
+          x1="263.226"
+          y1="18.058"
+          x2="263.226"
+          y2="315.859"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#00FFAB" />
+          <stop offset="1" stopColor="#7C75EC" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="d"
+          x1="268"
+          y1="-17.695"
+          x2="268"
+          y2="351.612"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#00FFAB" />
+          <stop offset="1" stopColor="#7C75EC" stopOpacity="0" />
+        </linearGradient>
+        <filter
+          id="a"
+          x="132.044"
+          y="48.201"
+          width="249.218"
+          height="249.218"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+          <feGaussianBlur
+            stdDeviation="27"
+            result="effect1_foregroundBlur_27_138"
+          />
+        </filter>
+        <filter
+          id="b"
+          x=".45"
+          y="-95.817"
+          width="525.551"
+          height="525.551"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+          <feGaussianBlur
+            stdDeviation="56.938"
+            result="effect1_foregroundBlur_27_138"
+          />
+        </filter>
+      </defs>
+    </svg>
+  );
+};
