@@ -61,6 +61,11 @@ const CodeEditor = React.forwardRef<HTMLDivElement, CodeEditorProps>(
             className,
             "bg-gradient-to-r rounded-lg from-emerald-600 to-green-600  w-full relative overflow-hidden"
           )}
+          style={{
+            fontFamily: `${
+              font || "JetBrains Mono"
+            }, ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace`,
+          }}
           ref={ref}
         >
           {noise && (
@@ -93,9 +98,7 @@ const CodeEditor = React.forwardRef<HTMLDivElement, CodeEditorProps>(
             style={
               {
                 ...EditorTheme,
-                fontFamily: `${
-                  font || "JetBrains Mono"
-                }, ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace`,
+
                 fontSize,
               } as React.CSSProperties
             }

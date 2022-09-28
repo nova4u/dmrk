@@ -50,6 +50,14 @@
     "Sharing your code has never been easier",
     "Even code wants to be pretty"
   ],
-  "fontFamily": ["JetBrains Mono", "Manrope var"],
+  "fontFamily": [
+    { "name": "JetBrains Mono", "source": "jetBrainsMono.ts" },
+    { "name": "FiraCode", "url": "FiraCode.woff2", "source": "firaCode.ts" },
+    {
+      "name": "CascadiaCode",
+      "url": "CascadiaCode.woff2",
+      "source": "cascadia.ts"
+    }
+  ],
   "fontSizes": ["12px", "14px", "16px", "18px"]
 }

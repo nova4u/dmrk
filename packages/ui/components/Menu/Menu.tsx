@@ -1,27 +1,29 @@
-import React, { FC } from "react";
+import React, { FC, ReactPortal } from "react";
 import * as Popover from "@radix-ui/react-popover";
 import clsx from "clsx";
 import Chevron from "../Icons/Chevron";
 
-const optionsIsStringArray = (
-  options: MenuProps["options"]
-): options is string[] => {
-  if (typeof options[0] === "string") return true;
+const isOptionCustomMenuOption = (option: any): option is CustomMenuOption => {
+  if (typeof option === "object") {
+    return option.hasOwnProperty("el");
+  }
   return false;
 };
 
 type CustomElProps = {
   key: number;
 };
+export type CustomMenuOption = { el: (data: CustomElProps) => JSX.Element };
 
-interface MenuProps {
+interface MenuProps<IncomingOptions> {
   closeOnClick?: boolean;
-  onSelect?: (index: number, option: unknown) => void;
+  onSelect?: (
+    index: number,
+    option: IncomingOptions | CustomMenuOption
+  ) => void;
   active?: number;
   openOnMouseOver?: boolean;
-  options:
-    | string[]
-    | { el: (data: CustomElProps) => JSX.Element; action?: () => void }[];
+  options: IncomingOptions[] | CustomMenuOption[];
   label?: (props: { onMouseOver?: () => void }) => JSX.Element;
   showLabel?: boolean;
   className?: string;
@@ -36,7 +38,7 @@ interface MenuProps {
   size?: "sm" | "md" | "lg" | "auto";
 }
 
-const Menu: FC<MenuProps> = ({
+const Menu = <IncomingOptions,>({
   onSelect,
   closeOnClick = false,
   className,
@@ -51,14 +53,14 @@ const Menu: FC<MenuProps> = ({
   onCloseAutoFocus,
   controller,
   size = "auto",
-}) => {
+}: MenuProps<IncomingOptions>) => {
   const [open, setOpen] = React.useState(false);
 
   const setIsOpen = (v: boolean) => controller?.setOpen(v) || setOpen(v);
 
   const isOpen = controller ? controller.open : open;
 
-  const handleClick = (i: number, option: MenuProps["options"][0]) => {
+  const handleClick = (i: number, option: IncomingOptions) => {
     if (closeOnClick) setIsOpen(false);
     if (onSelect) onSelect(i, option);
   };
@@ -95,8 +97,10 @@ const Menu: FC<MenuProps> = ({
                 <span className="text-left truncate">
                   {showLabel &&
                   active !== undefined &&
-                  optionsIsStringArray(options) ? (
-                    options[active]
+                  !isOptionCustomMenuOption(options[active]) ? (
+                    <span className="text-left truncate">
+                      {options[active] as React.ReactNode}
+                    </span>
                   ) : (
                     <span className="h-4 block"></span>
                   )}
@@ -142,6 +146,7 @@ const Menu: FC<MenuProps> = ({
                     </button>
                   );
                 } else {
+                  if (!isOptionCustomMenuOption(item)) return;
                   return item.el({
                     key: i,
                   });

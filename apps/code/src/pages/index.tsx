@@ -1,4 +1,4 @@
-import React, { KeyboardEvent, useEffect } from "react";
+import React, { KeyboardEvent } from "react";
 import Head from "next/head";
 import { NextPage } from "next";
 import {
@@ -27,6 +27,29 @@ export const Docs: NextPage = () => {
   const [fontSize, setFontSize] = React.useState<string>(fontSizes[2]);
   const codeRef = React.useRef<HTMLDivElement>(null);
 
+  const handleFontChange = (i: number, option: string) => {
+    const fontHasBeenPreloaded = !fontFamily[i].url;
+    if (fontHasBeenPreloaded) {
+      return setFont(i);
+    }
+
+    const fontAlreadyLoaded = document.fonts.check(`12px ${option}`);
+
+    if (fontAlreadyLoaded) return setFont(i);
+
+    new FontFace(option, `url(${fontFamily[i].url})`, {
+      style: "normal",
+      weight: "100 900",
+      display: "swap",
+    })
+      .load()
+      .then((font) => {
+        document.fonts.add(font);
+        setFont(i);
+      })
+      .catch((e) => console.log(e));
+  };
+
   const filteredLanguageList = React.useMemo(
     () =>
       languages.filter((lang) =>
@@ -35,41 +58,44 @@ export const Docs: NextPage = () => {
     [search]
   );
 
-  const downloadAsPng = React.useCallback(() => {
+  const downloadAsPng = React.useCallback(async () => {
     if (!codeRef.current) return;
-    ImageConverter.generate(
+    await ImageConverter.generate(
       {
         format: "png",
+        font: fontFamily[font].name,
         download: true,
         copyToClipboard: false,
       },
       codeRef.current
     );
-  }, []);
+  }, [font]);
 
-  const copyToClipboard = React.useCallback(() => {
+  const copyToClipboard = React.useCallback(async () => {
     if (!codeRef.current) return;
-    ImageConverter.generate(
+    await ImageConverter.generate(
       {
         format: "png",
+        font: fontFamily[font].name,
         download: false,
         copyToClipboard: true,
       },
       codeRef.current
     );
-  }, []);
+  }, [font]);
 
-  const downloadAsSvg = React.useCallback(() => {
+  const downloadAsSvg = React.useCallback(async () => {
     if (!codeRef.current) return;
-    ImageConverter.generate(
+    await ImageConverter.generate(
       {
         format: "svg",
+        font: fontFamily[font].name,
         download: true,
         copyToClipboard: false,
       },
       codeRef.current
     );
-  }, []);
+  }, [font]);
 
   const handleSearchKeyDown = (e: KeyboardEvent) => {
     const isFilteredToSingle = filteredLanguageList.length === 1;
@@ -94,7 +120,7 @@ export const Docs: NextPage = () => {
       <CodeEditor
         ref={codeRef}
         language={language}
-        font={fontFamily[font]}
+        font={fontFamily[font].name}
         fontSize={fontSize}
         noise={noise}
         className="p-6 max-w-2xl"
@@ -145,10 +171,12 @@ export const Docs: NextPage = () => {
         />
         <Menu
           active={font}
-          onSelect={(i) => setFont(i)}
+          onSelect={(i, option) =>
+            typeof option === "string" && handleFontChange(i, option)
+          }
           closeOnClick
           showLabel={true}
-          options={fontFamily}
+          options={fontFamily.map((font) => font.name)}
           icon={<Text className="w-5 h-5 mr-2 flex-shrink-0" />}
           size="auto"
         />
