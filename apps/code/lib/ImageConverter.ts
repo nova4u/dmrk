@@ -1,3 +1,5 @@
+import settings from "../settings.json";
+
 type Options = {
   format: ImageFormat;
   download: boolean;
@@ -13,23 +15,33 @@ type ImageFormat = "svg" | "png";
 export default class ImageConverter {
   private svg: string;
 
-  private constructor(private readonly options: Options) {
+  private constructor(
+    private readonly options: Options,
+    private readonly fontStyle: string
+  ) {
     this.svg = this.toSvgDataURI();
+    console.log(this.svg);
   }
 
-  public static generate(
-    options: Pick<Options, "format" | "download" | "copyToClipboard">,
+  public static async generate(
+    options: Pick<Options, "format" | "download" | "copyToClipboard"> & {
+      font: string;
+    },
     node: HTMLElement
   ) {
     const { clientWidth: width, clientHeight: height } = node;
     const cloneNode = node.cloneNode(true) as HTMLElement;
-    const image = new ImageConverter({
-      ...options,
-      node: node,
-      cloneNode,
-      width,
-      height,
-    });
+    const fontStyle: string = await this.getFontFamilyStyle(options.font);
+    const image = new ImageConverter(
+      {
+        ...options,
+        node: node,
+        cloneNode,
+        width,
+        height,
+      },
+      fontStyle
+    );
     if (options.download) {
       image.download();
     }
@@ -71,7 +83,7 @@ export default class ImageConverter {
     });
   }
 
-  private toSvgDataURI(): string {
+  private toSvgDataURI() {
     this.applyStyles(this.options.node, this.options.cloneNode);
     this.options.cloneNode.setAttribute(
       "xmlns",
@@ -82,6 +94,7 @@ export default class ImageConverter {
       this.options.width
     }" height="${this.options.height}">
     <foreignObject x="0" y="0" width="100%" height="100%">
+    <style>${this.fontStyle}</style>
         ${this.escapeXhtml(serializedNode, true)}
           </foreignObject>
         </svg>
@@ -114,6 +127,16 @@ export default class ImageConverter {
     link.click();
     link.remove();
   }
+
+  private static getFontFamilyStyle = (fontName: string): Promise<string> => {
+    return new Promise(async (res) => {
+      const font = settings?.fontFamily.find((font) => font.name === fontName);
+      if (!font) return;
+      const fontStyles = await import(`./fonts/${font?.source}`).then((mod) =>
+        res(mod.default)
+      );
+    });
+  };
 
   private applyStyles = (element: HTMLElement, target: HTMLElement) => {
     const styles = window.getComputedStyle(element);
