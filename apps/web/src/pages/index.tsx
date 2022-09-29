@@ -216,8 +216,8 @@ const Index: NextPage = ({}) => {
     <div className="">
       <Wrapper className="text-neutral-100 font-sans mb-28 relative text-left md:text-center">
         <Navbar className="mt-10 z-20 relative" />
-        <Background className="absolute top-0 left-0  w-full h-full -z-10 " />
-        <div className="flex items-center justify-center mt-52 gap-2 md:gap-4 max-w-3xl flex-wrap mx-auto">
+        <Background className="absolute -top-20  left-0  w-full h-full -z-10 " />
+        <div className="flex items-center justify-center mt-28  md:mt-36 gap-2 md:gap-4 max-w-3xl flex-wrap mx-auto">
           {logos.map((logo, i) => (
             <div
               className="bg-primary-darkest/95 h-auto  py-2 px-2  rounded-md flex items-center  justify-center flex-col gradient-box"
