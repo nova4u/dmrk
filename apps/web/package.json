@@ -1,0 +1,33 @@
+{
+  "name": "web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port 3002",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@dmrk/ui": "workspace:*",
+    "autoprefixer": "^10.4.12",
+    "clsx": "^1.2.1",
+    "next": "12.3.0",
+    "postcss": "^8.4.16",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "tailwindcss": "^3.1.8"
+  },
+  "devDependencies": {
+    "@dmrk/config": "workspace:*",
+    "@dmrk/eslint-config-custom": "workspace:*",
+    "@dmrk/tsconfig": "workspace:*",
+    "@types/node": "^17.0.12",
+    "@types/react": "18.0.21",
+    "@types/react-dom": "^18.0.6",
+    "eslint": "8.24.0",
+    "eslint-config-next": "^12.0.8",
+    "next-transpile-modules": "9.0.0",
+    "typescript": "4.8.4"
+  }
+}

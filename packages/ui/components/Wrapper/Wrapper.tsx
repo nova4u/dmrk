@@ -9,13 +9,7 @@ const Wrapper: FC<React.PropsWithChildren<WrapperProps>> = ({
   ...rest
 }) => {
   return (
-    <div
-      className={clsx(
-        "max-w-screen-xl px-3 md:px-3 lg:px-3 mx-auto",
-        className
-      )}
-      {...rest}
-    >
+    <div className={clsx("max-w-screen-xl px-6 mx-auto", className)} {...rest}>
       {children}
     </div>
   );

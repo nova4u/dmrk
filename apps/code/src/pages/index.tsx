@@ -112,7 +112,7 @@ export const Docs: NextPage = () => {
   return (
     <Wrapper className="py-14 relative overflow-hidden">
       <Seo />
-      <Navbar className="" />
+      <Navbar className="font-mono" />
       <Circle className="top-0 left-1/2 absolute -translate-x-1/2 animate-pulse -z-10" />
       <Typography className="mb-20" as="h1">
         {headlines[0]}
