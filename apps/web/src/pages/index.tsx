@@ -267,9 +267,8 @@ Let's get to the point, I started as an UI Designer and i did pretty good IMO, I
 `}
           />
           <div className="w-fit relative gradient-box rounded-md mx-auto lg:mx-0 group ">
-            <div className="absolute bg-primary/20 inset-0 w-full h-full z-20 bg-blend-overlay group-hover:opacity-0 ease-out transition rounded-[inherit]"></div>
             <NextImage
-              src={`/dmarushchak.jpg`}
+              src={`/denismarushchak.jpg`}
               width={460}
               height={614}
               className="rounded-lg  object-cover mt-10 lg:mt-0 h-auto relative z-10 transition"
