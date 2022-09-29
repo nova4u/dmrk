@@ -432,7 +432,7 @@ Let's get to the point, I started as an UI Designer and i did pretty good IMO, I
             <FormField
               as="input"
               className={clsx({
-                "focus:ring-rose-600 animate-pulse":
+                "ring-rose-600 ring-1 animate-pulse":
                   !emailValidation(formData.email) && formData.email,
                 "ring-emerald-600 focus:ring-emerald-600 ring-1":
                   emailValidation(formData.email),
