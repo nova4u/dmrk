@@ -16,18 +16,25 @@ body {
 }
 
 .gradient-box {
+  --gradientDegress: 120deg;
   @apply relative;
+}
+
+@media not all and (min-resolution: 0.001dpcm) {
+  .gradient-box {
+    --gradientDegress: 90deg;
+  }
 }
 
 .gradient-box::after {
   @apply rounded-[inherit] inset-0 absolute -z-10 -m-px transform-gpu;
   --gradient: linear-gradient(
-    135deg,
+    var(--gradientDegress),
     #00ceff 0%,
     rgba(203, 105, 237, 0.1) 22.16%,
     rgba(203, 105, 237, 0.02) 39.35%,
     #15bbe2 52.89%,
-    rgba(203, 105, 237, 0.03) 64.35%,
+    rgba(203, 105, 237, 0.04) 64.35%,
     rgba(203, 105, 237, 0.1) 78.93%,
     #15bbe2 100%
   );
