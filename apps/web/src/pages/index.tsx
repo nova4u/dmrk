@@ -79,7 +79,7 @@ interface ProjectProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export const Overlay = () => {
   return (
-    <div className="absolute inset-0 bg-primary/10 w-full h-full hover:opacity-0 transition"></div>
+    <div className="absolute inset-0 bg-primary/10 w-full h-full hover:opacity-0 transition rounded-[inherit]"></div>
   );
 };
 
@@ -174,25 +174,26 @@ export const Project = ({
       </div>
       <div
         className={clsx(
-          "overflow-hidden rounded-lg  flex-shrink-0  transition ease-out max-w-lg mt-10 lg:mt-0 mx-auto lg:mx-0 justify-self-end relative h-full flex items-center",
+          " rounded-lg  flex-shrink-0  transition ease-out max-w-lg mt-10 lg:mt-0 mx-auto lg:mx-0 justify-self-end relative h-full flex items-center ",
           {
             "lg:col-start-1 lg:row-start-1": layout === "image-left",
           }
         )}
       >
-        <div className="absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-primary-dark to-transparent  h-full -z-10"></div>
-        <div className="absolute inset-y-0 right-0 w-px bg-gradient-to-b from-transparent via-primary-dark to-transparent  h-full -z-10"></div>
-        <div className="absolute inset-y-0 right-16 w-px bg-gradient-to-b from-transparent via-primary-dark to-transparent  h-full -z-10"></div>
-        <div className="absolute inset-y-0 left-16 w-px bg-gradient-to-b from-transparent via-primary-dark to-transparent  h-full -z-10"></div>
-        <div className="relative">
+        <div className="absolute -top-2 -bottom-2 md:-top-10 md:-bottom-10  h-auto left-0 w-px bg-gradient-to-b from-transparent via-primary-dark to-transparent -z-10 "></div>
+        <div className="absolute -top-2 -bottom-2 md:-top-10 md:-bottom-10  h-auto right-0 w-px bg-gradient-to-b from-transparent via-primary-dark to-transparent -z-10 "></div>
+        <div className="absolute -top-2 -bottom-2 md:-top-10 md:-bottom-10  h-auto right-20 w-px bg-gradient-to-b from-transparent via-primary-dark to-transparent -z-10 "></div>
+        <div className="absolute -top-2 -bottom-2 md:-top-10 md:-bottom-10  h-auto left-20 w-px bg-gradient-to-b from-transparent via-primary-dark to-transparent -z-10 "></div>
+        <div className="relative gradient-border">
           <NextImage
             src={image}
-            width={600}
-            height={400}
-            className="rounded-lg  object-cover w-full  lg:mt-0  transition ease-out border border-white/40 hover:border-primary "
+            quality={100}
+            width={1920}
+            height={1080}
+            className="rounded-lg aspect-auto  object-cover   lg:mt-0  transition ease-out border border-white/10 hover:border-primary "
             alt="Denis Marushchak photo"
           />
-          <Overlay />
+          {/* <Overlay /> */}
         </div>
       </div>
     </div>
@@ -288,7 +289,7 @@ Let's get to the point, I started as an UI Designer and i did pretty good IMO, I
           <div id="projects">
             <Project
               layout="image-right"
-              image={"/projects/pointofsalenet.jpg"}
+              image={"/projects/codedmrkdev.jpeg"}
               github="https://github.com/nova4u/dmrk"
               figma="https://github.com/nova4u/dmrk"
               stack={["nextjs", "tailwind", "turborepo"]}
@@ -315,7 +316,7 @@ Let's get to the point, I started as an UI Designer and i did pretty good IMO, I
             />
             <Project
               layout="image-right"
-              image={"/projects/retry.com.jpg"}
+              image={"/projects/retrycom.jpeg"}
               stack={["wordpress", "gatsby", "tailwind"]}
               subheading={`Marketing website`}
               link={`https://retry.com`}
@@ -333,7 +334,7 @@ Let's get to the point, I started as an UI Designer and i did pretty good IMO, I
             />
             <Project
               layout="image-right"
-              image={"/projects/retry.com.jpg"}
+              image={"/projects/pointofsalenet.jpeg"}
               stack={["wordpress", "gatsby", "tailwind", "framer"]}
               subheading={`Marketing website`}
               link={`https://pointofsale.net`}
@@ -351,7 +352,7 @@ Let's get to the point, I started as an UI Designer and i did pretty good IMO, I
             />
             <Project
               layout="image-right"
-              image={"/projects/retry.com.jpg"}
+              image={"/projects/erplycom.jpeg"}
               stack={["wordpress", "tailwind"]}
               subheading={`Marketing website`}
               link={`https://retry.com`}
