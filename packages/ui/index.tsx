@@ -7,3 +7,4 @@ export { default as Switch } from "./components/Switch/Switch";
 export { default as Menu } from "./components/Menu/Menu";
 export { default as Typography } from "./components/Typography/Typography";
 export { default as Navbar } from "./components/Navbar/Navbar";
+export { default as FormField } from "./components/FormField/FormField";
