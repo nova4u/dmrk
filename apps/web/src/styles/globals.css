@@ -20,7 +20,7 @@ body {
 }
 
 .gradient-box::after {
-  @apply rounded-[inherit] inset-0 absolute -z-10 -m-px;
+  @apply rounded-[inherit] inset-0 absolute -z-10 -m-px transform-gpu;
   --gradient: linear-gradient(
     135deg,
     #00ceff 0%,
@@ -32,6 +32,7 @@ body {
     #15bbe2 100%
   );
   content: "";
+  will-change: background-position;
   background-image: var(--gradient);
   background-size: 200%;
   background-position: 0 100%;
