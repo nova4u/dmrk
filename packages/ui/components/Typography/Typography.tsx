@@ -3,6 +3,7 @@ import React from "react";
 
 type TypographyOwnProps<E extends React.ElementType = React.ElementType> = {
   children: string | React.ReactNode;
+  unStyled?: boolean;
   as?: E;
 };
 
@@ -15,6 +16,7 @@ function Typography<E extends React.ElementType = typeof __DEFAULT_ELEMENT__>({
   children,
   as,
   className,
+  unStyled = false,
   ...props
 }: TypographyProps<E>) {
   const Component = as || __DEFAULT_ELEMENT__;
@@ -27,7 +29,7 @@ function Typography<E extends React.ElementType = typeof __DEFAULT_ELEMENT__>({
       className={clsx(
         {
           "tracking-tighter text-emerald-50 text-center max-w-sm text-5xl font-bold mx-auto mt-20":
-            isHeading,
+            isHeading && !unStyled,
         },
         className
       )}

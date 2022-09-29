@@ -12,7 +12,7 @@ const Logotype: FC<LogotypeProps> = ({ textClassName, className, ...rest }) => {
     <div className={clsx("flex items-center", className)} {...rest}>
       <div className="w-auto relative">
         <Image
-          className="object-cover  w-10 h-10 rounded-full border border-emerald-500"
+          className="object-cover w-10 h-10  flex-shrink-0 rounded-full border border-emerald-500"
           src={Logo}
           alt="Denis Marushchak photo"
           quality={100}
@@ -23,7 +23,7 @@ const Logotype: FC<LogotypeProps> = ({ textClassName, className, ...rest }) => {
       </div>
       <span
         className={clsx(
-          "font-mono ml-3 md:ml-6 text-md md:text-lg tracking-tight",
+          " ml-3 md:ml-6 text-md md:text-lg tracking-tight font-bold ",
           {
             "text-emerald-50": !textClassName,
           },

@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body,
+html {
+  @apply overflow-x-hidden;
+}
+
+body {
+  @apply antialiased min-h-screen bg-primary-darkest;
+}
+
+.highlight-text {
+  @apply bg-gradient-to-r bg-clip-text text-transparent  from-primary-light  to-primary;
+}
+
+.gradient-box {
+  @apply relative;
+}
+
+.gradient-box::after {
+  @apply rounded-[inherit] inset-0 absolute -z-10 -m-px;
+  --gradient: linear-gradient(
+    135deg,
+    #00ceff 0%,
+    rgba(203, 105, 237, 0.1) 22.16%,
+    rgba(203, 105, 237, 0.02) 39.35%,
+    #15bbe2 52.89%,
+    rgba(203, 105, 237, 0.03) 64.35%,
+    rgba(203, 105, 237, 0.1) 78.93%,
+    #15bbe2 100%
+  );
+  content: "";
+  background-image: var(--gradient);
+  background-size: 200%;
+  background-position: 0 100%;
+  animation: animateBg 7s linear alternate-reverse infinite;
+}
+
+@keyframes animateBg {
+  from {
+    background-position: 0 100%;
+  }
+  to {
+    background-position: 100% 200%;
+  }
+}
+
+@font-face {
+  font-family: "Manrope var";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/manrope-var.woff2") format("woff2") tech("variants"),
+    url("/manrope-var.woff2") format("woff2-variations");
+}
+
+@font-face {
+  font-family: "FiraCode";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/FiraCode-VF.woff2") format("woff2") tech("variants"),
+    url("/FiraCode-VF.woff2") format("woff2-variations");
+}
