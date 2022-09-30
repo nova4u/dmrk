@@ -5,62 +5,74 @@ import clsx from "clsx";
 import React, { FormEvent } from "react";
 import { default as NextImage } from "next/future/image";
 import { Background, Heading } from "@components/index";
+import Link from "next/link";
 
 const logos = [
   {
     name: "tailwind",
-    src: "/logos/tailwindcss-logotype-white 1.svg",
+    src: "/logos2/tailwindcss.svg",
     alt: "tailwindcss logo",
+    width: 214.66,
   },
   {
     name: "nextjs",
-    src: "/logos/nextjs.svg",
+    src: "/logos2/nextjs.svg",
     alt: "Nextjs logo",
+    width: 138,
   },
   {
     name: "gatsby",
-    src: "/logos/Gatsby.svg",
+    src: "/logos2/Gatsby.svg",
     alt: "Gatsby logo",
+    width: 107.33,
   },
   {
     name: "astro",
-    src: "/logos/astro.svg",
+    src: "/logos2/astro.svg",
     alt: "Astro logo",
+    width: 82.88,
   },
   {
     name: "framer",
-    src: "/logos/framer.svg",
+    src: "/logos2/framer-motion.svg",
     alt: "framer logo",
+    width: 93.69,
   },
   {
     name: "turborepo",
-    src: "/logos/turborepo.svg",
+    src: "/logos2/turborepo.svg",
     alt: "turborepo logo",
+    width: 126,
   },
   {
     name: "supabase",
     src: "/logos/supabase.svg",
     alt: "supabase logo",
+    width: 143.95,
   },
   {
     name: "wordpress",
-    src: "/logos/WordPress.svg",
+    src: "/logos2/wordpress.svg",
     alt: "WordPress logo",
+    width: 129.91,
   },
   {
     name: "strapi",
-    src: "/logos/strapi.svg",
+    src: "/logos2/strapi.svg",
     alt: "Strapi logo",
+    width: 108.5,
   },
   {
     name: "contentful",
-    src: "/logos/contentful.svg",
+    src: "/logos2/contentful.svg",
     alt: "Contentful logo",
+    width: 131.01,
   },
   {
     name: "figma",
-    src: "/logos/Figma.svg",
+    src: "/logos2/Figma.svg",
     alt: "Figma logo",
+    width: 72.14,
   },
 ];
 
@@ -100,7 +112,7 @@ export const Project = ({
   return (
     <div
       className={clsx(
-        "grid grid-cols-1 lg:grid-cols-2 mt-40 items-center",
+        "grid grid-cols-1 lg:grid-cols-2 items-center",
         className
       )}
       {...rest}
@@ -146,26 +158,17 @@ export const Project = ({
         <Typography
           // @ts-ignore
           as="p"
-          className=" tracking-wide text-neutral-200 text-sm  mt-5 max-w-lg leading-[180%]"
+          className=" tracking-wide text-neutral-300 mt-5 max-w-xl lg:max-w-lg leading-[180%]"
           dangerouslySetInnerHTML={{ __html: content }}
         />
         <div className="mt-10">
-          <ul className="flex gap-2 mt-4 flex-wrap">
+          <ul className="flex gap-5 mt-4 flex-wrap  w-fit lg:max-w-lg bg-primary-darker/20 p-2  rounded-lg border border-white/5 ">
             {stack.map((tag, i) => {
               const logo = logos.find((logo) => logo.name === tag);
               if (!logo) return;
               return (
-                <li
-                  className=" py-0.5 px-2 rounded-full flex items-center justify-center h-6"
-                  key={i}
-                >
-                  <NextImage
-                    src={logo.src}
-                    width="150"
-                    className="h-full flex-grow w-auto"
-                    height="40"
-                    alt={logo.alt}
-                  />
+                <li className="w-24 h-6 lg:h-8     flex-wrap relative " key={i}>
+                  <NextImage src={logo.src} fill alt={logo.alt} />
                 </li>
               );
             })}
@@ -180,10 +183,6 @@ export const Project = ({
           }
         )}
       >
-        <div className="absolute -top-2 -bottom-2 md:-top-10 md:-bottom-10  h-auto left-0 w-px bg-gradient-to-b from-transparent via-primary-dark to-transparent -z-10 "></div>
-        <div className="absolute -top-2 -bottom-2 md:-top-10 md:-bottom-10  h-auto right-0 w-px bg-gradient-to-b from-transparent via-primary-dark to-transparent -z-10 "></div>
-        <div className="absolute -top-2 -bottom-2 md:-top-10 md:-bottom-10  h-auto right-20 w-px bg-gradient-to-b from-transparent via-primary-dark to-transparent -z-10 "></div>
-        <div className="absolute -top-2 -bottom-2 md:-top-10 md:-bottom-10  h-auto left-20 w-px bg-gradient-to-b from-transparent via-primary-dark to-transparent -z-10 "></div>
         <div className="relative gradient-border">
           <NextImage
             src={image}
@@ -259,8 +258,8 @@ const Index: NextPage = ({}) => {
             >
               <NextImage
                 src={logo.src}
-                width="80"
-                height="10"
+                width={logo.width}
+                height={28}
                 className=" flex-grow w-auto h-5 md:h-7"
                 alt={logo.alt}
               />
@@ -278,13 +277,11 @@ const Index: NextPage = ({}) => {
           and easy to maintain websites.
         `}
         />
-        <Button
-          variant="primary"
-          className="mt-7 bg-gradient-to-b from-primary to-primary-dark shadow-xl shadow-primary/5 text-primary-darkest self-center hover:-translate-y-px"
-          color="custom"
-        >
-          Contact Me
-        </Button>
+        <Link href="#contact-me" scroll>
+          <a className="mt-7 bg-gradient-to-b from-primary to-primary-dark shadow-xl shadow-primary/5 text-primary-darkest self-center hover:-translate-y-px px-4 py-2 font-medium hover:brightness-125 transition ease-out  hover:shadow-none rounded-md inline-block">
+            Contact Me
+          </a>
+        </Link>
       </Wrapper>
 
       <section className="  py-10 text-white ">
@@ -319,7 +316,10 @@ Let's get to the point, I started as an UI Designer and i did pretty good IMO, I
             highlight="projects."
             heading={`Latest projects.`}
           />
-          <div id="projects">
+          <div
+            id="projects"
+            className="space-y-20 lg:space-y-40 mt-20 lg:mt-40"
+          >
             <Project
               layout="image-right"
               image={"/projects/codedmrkdev.jpeg"}
@@ -354,15 +354,7 @@ Let's get to the point, I started as an UI Designer and i did pretty good IMO, I
               subheading={`Marketing website`}
               link={`https://retry.com`}
               heading={`retry.com`}
-              content={`Code screenshot generator, made in Next.js, highly inspired by
-       
-          Personal project, which was made for self-educating and practice
-          purposes. I have utilised monorepo with configs and UI component
-          library under the different packages. The same UI component library is
-          used for the website, you currently reading. I got many ideas on how
-          to it can be improved, there are many features on my mind, hope I
-          would have some time to keep updating it. The source code is
-          open-source and can be found on the github link below.`}
+              content={`Basic marketing projects that consists of two products. WordPress is used as a Headless CMS, to source all the data. Everything is being controlled from the WordPress, all the info is being sourced from there. I used the Advanced Custom Fields with the combination of flexible fields, to build the page layout on the fly. Basically the project consists of different content sections, that are highly customizable from the WordPress admin panel. Easy to use, when you need to quickly push new marketing page. `}
               title={"code.dmrk.dev"}
             />
             <Project
@@ -372,15 +364,7 @@ Let's get to the point, I started as an UI Designer and i did pretty good IMO, I
               subheading={`Marketing website`}
               link={`https://pointofsale.net`}
               heading={`pointofsale.net`}
-              content={`Code screenshot generator, made in Next.js, highly inspired by
-       
-          Personal project, which was made for self-educating and practice
-          purposes. I have utilised monorepo with configs and UI component
-          library under the different packages. The same UI component library is
-          used for the website, you currently reading. I got many ideas on how
-          to it can be improved, there are many features on my mind, hope I
-          would have some time to keep updating it. The source code is
-          open-source and can be found on the github link below.`}
+              content={`Another marketing page for the point of sale product, using WordPress as a Headless CMS with a combition of Advanced Custom Fields to create powerful, highly adjustable layouts. Using Gatsby to source all the data from the WordPress on render, headers, footers, all the text contents, everything is coming from the WordPress. The projects contains 3 templates, one for building marketing pages, which consist of many reusable content blocks, where you can change the order or any content inside. Blog post template for the posts, and another product template for the products displayed.`}
               title={"code.dmrk.dev"}
             />
             <Project
@@ -390,21 +374,13 @@ Let's get to the point, I started as an UI Designer and i did pretty good IMO, I
               subheading={`Marketing website`}
               link={`https://retry.com`}
               heading={`erply.com`}
-              content={`Code screenshot generator, made in Next.js, highly inspired by
-       
-          Personal project, which was made for self-educating and practice
-          purposes. I have utilised monorepo with configs and UI component
-          library under the different packages. The same UI component library is
-          used for the website, you currently reading. I got many ideas on how
-          to it can be improved, there are many features on my mind, hope I
-          would have some time to keep updating it. The source code is
-          open-source and can be found on the github link below.`}
+              content={`This is the main marketing website for the ERPLY. It consists of more than 1000 pages, the idea was to rebuild an old website and keep all the blog posts. First we have created a design of the main page, custom templates for different types of pages, it consists of more than 10 templates overall. The website is built as a WordPress custom theme, built from scratch, with lots of integrations and customizations. I have worked on 3 custom plugins, used internally in the WordPress admin menu. Highly customizable website thanks to Advanced Custom Fields, pretty much 95% of the content is being connected to the admin panel, where it is possible to change all the content.`}
               title={"code.dmrk.dev"}
             />
           </div>
         </Wrapper>
       </section>
-      <section className="">
+      <section id="contact-me" className="">
         <Wrapper className="text-primary-superlight text-left md:text-center my-40 relative">
           <Heading
             className=""
