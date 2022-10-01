@@ -1,0 +1,9 @@
+{
+  "root": true,
+  "extends": ["@dmrk/eslint-config-custom"],
+  "settings": {
+    "next": {
+      "rootDir": ["apps/*/"]
+    }
+  }
+}
