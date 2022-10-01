@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
-const plugin = require("tailwindcss/plugin");
-const { fontFamily } = require("tailwindcss/defaultTheme");
+const plugin = require("tailwindcss/plugin")
+const { fontFamily } = require("tailwindcss/defaultTheme")
 
 module.exports = {
   content: [
@@ -20,21 +20,23 @@ module.exports = {
           "0px 1px 5px rgba(124, 117, 236, 0.05), 0px 4px 4px rgba(0, 0, 0, 0.1), 0px 1px 25px rgba(16, 185, 129, 0.15)",
       },
       animation: {
-        bottomBorderFade: "bottomBorderFade 6s linear infinite alternate",
+        bottomBorderFade: "bottomBorderFade 4s linear infinite alternate",
       },
       keyframes: {
         bottomBorderFade: {
           "0%": {
-            transform: "translate3d(-33%, 0, 0) scaleX(160%)",
-            filter: "blur(2px)",
-          },
-          "50%": {
-            transform: "translate3d(0%, 0, 0) scaleX(100%)",
+            transform: "translate3d(-40%, 0, 0) scaleX(110%)",
+            transformOrigin: "left",
             filter: "blur(1px)",
           },
+
+          "50%": {
+            transform: "translate3d(0%, 0, 0) scaleX(100%)",
+          },
           "100%": {
-            transform: "translate3d(33%, 0, 0) scaleX(160%)",
-            filter: "blur(2px)",
+            transform: "translate3d(40%, 0, 0) scaleX(120%)",
+            transformOrigin: "right",
+            filter: "blur(1px)",
           },
         },
       },
@@ -42,7 +44,7 @@ module.exports = {
   },
   plugins: [
     plugin(({ addVariant }) => {
-      addVariant("hocus", ["&:hover", "&:focus"]);
+      addVariant("hocus", ["&:hover", "&:focus"])
     }),
   ],
-};
+}
