@@ -41,7 +41,7 @@ export const Project = ({
       {...rest}
     >
       <div
-        className={clsx({
+        className={clsx("max-w-md", {
           "lg:col-start-2 lg:row-start-1": layout === "image-left",
         })}
       >
@@ -84,8 +84,8 @@ export const Project = ({
           className=" tracking-wide text-neutral-300 mt-5 max-w-xl lg:max-w-lg leading-[180%]"
           dangerouslySetInnerHTML={{ __html: content }}
         />
-        <ul className="flex gap-5  flex-wrap  justify-center lg:justify-start lg:w-fit lg:max-w-lg  p-2  rounded-lg border bg-gradient-to-r from-transparent to-primary-darker/50 border-white/5 relative mt-5">
-          <BorderSvg className="absolute -bottom-px inset-x-0 w-full" />
+        <ul className="flex gap-5  flex-wrap  justify-center lg:justify-start lg:w-fit lg:max-w-lg border-b-0   p-2  rounded-lg border bg-gradient-to-r from-transparent  overflow-hidden to-primary-darker/50  border-white/5 relative mt-5">
+          <BorderSvg className="absolute bottom-0   inset-x-0 w-full animate-bottomBorderFade" />
           {stack.map((tag, i) => {
             const logo = logos.find((logo) => logo.name === tag);
             if (!logo) return;
@@ -99,7 +99,7 @@ export const Project = ({
       </div>
       <div
         className={clsx(
-          " rounded-lg  flex-shrink-0  transition ease-out max-w-lg mt-10 lg:mt-0 mx-auto lg:mx-0 justify-self-end relative h-full",
+          " rounded-lg  flex-shrink-0  transition ease-out  mt-10 lg:mt-0 mx-auto lg:mx-0 justify-self-end relative h-full",
           {
             "lg:col-start-1 lg:row-start-1": layout === "image-left",
           }
@@ -109,15 +109,14 @@ export const Project = ({
           href={link}
           target="_blank"
           rel="noreferrer nofollow noindex"
-          className="block relative"
+          className="block relative h-[inherit]"
         >
           <NextImage
-            sizes={`(max-width:1024px) 90vw, 50vw`}
             src={image}
-            quality={100}
-            width={1920}
-            height={1080}
-            className="rounded-lg   object-cover   lg:mt-0  transition ease-out border border-white/10 hover:border-primary  "
+            sizes="(max-width: 1024px) 50vw, 100vw"
+            width={597}
+            height={365}
+            className="rounded-lg   object-contain     lg:mt-0  transition ease-out border border-white/10 hover:border-primary  "
             alt="Denis Marushchak photo"
           />
         </a>
@@ -157,10 +156,10 @@ export const BorderSvg = ({
         y2="0.249184"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#CB69ED" stop-opacity="0" />
-        <stop offset="0.254766" stop-color="#15BBE2" />
-        <stop offset="0.551648" stop-color="#CB69ED" />
-        <stop offset="1" stop-color="#CB69ED" stop-opacity="0" />
+        <stop stopColor="#CB69ED" stopOpacity="0" />
+        <stop offset="0.254766" stopColor="#15BBE2" />
+        <stop offset="0.551648" stopColor="#CB69ED" />
+        <stop offset="1" stopColor="#CB69ED" stopOpacity="0" />
       </linearGradient>
     </defs>
   </svg>

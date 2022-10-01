@@ -24,7 +24,7 @@ Let's get to the point, I started as an UI Designer and i did pretty good IMO, I
         />
         <div className="relative mx-auto w-fit gradient-box rounded-md lg:mx-0 group ">
           <NextImage
-            sizes={"33vw"}
+            sizes={"(max-width: 1024px) 100vw, 50vw"}
             src={img}
             quality={100}
             width={460}
