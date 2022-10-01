@@ -13,7 +13,7 @@ export const logos = [
   },
   {
     name: "gatsby",
-    src: "/logos2/Gatsby.svg",
+    src: "/logos2/gatsby.svg",
     alt: "Gatsby logo",
     width: 107.33,
   },
@@ -61,7 +61,7 @@ export const logos = [
   },
   {
     name: "figma",
-    src: "/logos2/Figma.svg",
+    src: "/logos2/figma.svg",
     alt: "Figma logo",
     width: 72.14,
   },
