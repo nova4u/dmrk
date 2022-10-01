@@ -27,15 +27,13 @@ function FormField<E extends React.ElementType = typeof __DEFAULT_ELEMENT__>({
         {name}
       </label>
       <Component
-        className={
-          (clsx(
-            `block   focus:outline-none focus:ring-1 transition focus:ring-primary bg-transparent border rounded-lg w-full h-10 pl-5 border-primary-darker/40  text-sm font-bold text-primary-light placeholder:text-primary-superlight/50 tracking-normal`,
-            {
-              "resize-none h-20 pt-2": as === "textarea",
-            }
-          ),
-          className)
-        }
+        className={clsx(
+          `block   focus:outline-none focus:ring-1 transition focus:ring-primary bg-transparent border rounded-lg w-full h-10 pl-5 border-primary-darker/40  text-sm font-bold text-primary-light placeholder:text-primary-superlight/50 tracking-normal`,
+          {
+            "resize-none h-20 pt-2": as === "textarea",
+          },
+          className
+        )}
         {...props}
       >
         {children}
