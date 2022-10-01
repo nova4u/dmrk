@@ -8,6 +8,7 @@ type Options = {
   cloneNode: HTMLElement
   height: number
   width: number
+  scale: number
 }
 
 type ImageFormat = "svg" | "png"
@@ -17,7 +18,6 @@ export default class ImageConverter {
 
   private constructor(private readonly options: Options, private readonly fontStyle: string) {
     this.svg = this.toSvgDataURI()
-    console.log(this.svg)
   }
 
   public static async generate(
@@ -36,6 +36,7 @@ export default class ImageConverter {
         cloneNode,
         width,
         height,
+        scale: options.copyToClipboard ? 3 : 1.3,
       },
       fontStyle
     )
@@ -70,8 +71,8 @@ export default class ImageConverter {
     const ctx = canvas.getContext("2d")
     const img = new Image()
     img.src = this.svg
-    canvas.width = this.options.width
-    canvas.height = this.options.height
+    canvas.width = this.options.width * this.options.scale
+    canvas.height = this.options.height * this.options.scale
     return new Promise((resolve) => {
       img.onload = () => {
         ctx?.drawImage(img, 0, 0)
@@ -83,10 +84,12 @@ export default class ImageConverter {
   private toSvgDataURI() {
     this.applyStyles(this.options.node, this.options.cloneNode)
     this.options.cloneNode.setAttribute("xmlns", "http://www.w3.org/1999/xhtml")
+    this.options.cloneNode.style.transform = `scale(${this.options.scale})`
+    this.options.cloneNode.style.transformOrigin = `top left`
     const serializedNode = this.serializeNode(this.options.cloneNode)
     return `data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="${
-      this.options.width
-    }" height="${this.options.height}">
+      this.options.width * this.options.scale
+    }" height="${this.options.height * this.options.scale}">
     <foreignObject x="0" y="0" width="100%" height="100%">
     <style>${this.fontStyle}</style>
         ${this.escapeXhtml(serializedNode, true)}
@@ -108,7 +111,7 @@ export default class ImageConverter {
 
   private async download(fileName: string = "dmrk-screengen") {
     const canvas = await this.draw()
-    const data = canvas.toDataURL("image/png")
+    const data = canvas.toDataURL("image/png", 1)
     const link = document.createElement("a")
     const { format } = this.options
     if (format === "png") {
