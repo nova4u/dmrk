@@ -51,61 +51,59 @@ const Contact: FC<ContactProps> = (props) => {
     [formData]
   )
   return (
-    <section id="contact-me" className="">
-      <Wrapper className="text-primary-superlight text-left md:text-center my-40 relative">
-        <Heading
-          className=""
-          subheading="contact"
-          heading="Always ready to talk."
-          highlight="talk."
+    <Wrapper className="text-primary-superlight text-left md:text-center  relative">
+      <Heading
+        className=""
+        subheading="contact"
+        heading="Always ready to talk."
+        highlight="talk."
+      />
+      <form
+        className="p-10 bg-primary-darkest gradient-box w-auto max-w-xl rounded-lg mx-auto mt-20  space-y-4 shadow-primary/5 shadow-xl "
+        onSubmit={handleSubmit}
+      >
+        <FormField
+          as="input"
+          type="text"
+          name="name"
+          placeholder="Name"
+          className={clsx({
+            "ring-emerald-600 focus:ring-emerald-600 ring-1": formData.name,
+          })}
+          value={formData.name}
+          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
         />
-        <form
-          className="p-10 bg-primary-darkest gradient-box w-auto max-w-xl rounded-lg mx-auto mt-20  space-y-4 shadow-primary/5 shadow-xl "
-          onSubmit={handleSubmit}
-        >
-          <FormField
-            as="input"
-            type="text"
-            name="name"
-            placeholder="Name"
-            className={clsx({
-              "ring-emerald-600 focus:ring-emerald-600 ring-1": formData.name,
-            })}
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          />
-          <FormField
-            as="input"
-            className={clsx({
-              "ring-rose-600 ring-1 animate-pulse":
-                !emailValidation(formData.email) && formData.email,
-              "ring-emerald-600 focus:ring-emerald-600 ring-1": emailValidation(formData.email),
-            })}
-            type="text"
-            name="email"
-            placeholder="Contact Email"
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            value={formData.email}
-          />
-          <FormField
-            as="textarea"
-            name="message"
-            className={clsx({
-              "ring-emerald-600 focus:ring-emerald-600 ring-1": formData.message,
-            })}
-            placeholder="Message"
-            value={formData.message}
-            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-          />
-          {error && error}
+        <FormField
+          as="input"
+          className={clsx({
+            "ring-rose-600 ring-1 animate-pulse":
+              !emailValidation(formData.email) && formData.email,
+            "ring-emerald-600 focus:ring-emerald-600 ring-1": emailValidation(formData.email),
+          })}
+          type="text"
+          name="email"
+          placeholder="Contact Email"
+          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+          value={formData.email}
+        />
+        <FormField
+          as="textarea"
+          name="message"
+          className={clsx({
+            "ring-emerald-600 focus:ring-emerald-600 ring-1": formData.message,
+          })}
+          placeholder="Message"
+          value={formData.message}
+          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+        />
+        {error && error}
 
-          <Button className="w-full hover:-translate-y-px ">Send</Button>
-        </form>
-        <Background className="absolute top-20 left-1/5 w-full h-full -z-10" />
-        <div className="w-40 h-40 absolute bottom-5 left-1/2 bg-indigo-700 rounded-full blur-[90px] -z-10"></div>
-        <div className="w-40 h-40 absolute bottom-10 left-1/4 bg-primary rounded-full blur-[90px] -z-10"></div>
-      </Wrapper>
-    </section>
+        <Button className="w-full hover:-translate-y-px ">Send</Button>
+      </form>
+      <Background className="absolute top-20 left-1/5 w-full h-full -z-10" />
+      <div className="w-40 h-40 absolute bottom-5 left-1/2 bg-indigo-700 rounded-full blur-[90px] -z-10"></div>
+      <div className="w-40 h-40 absolute bottom-10 left-1/4 bg-primary rounded-full blur-[90px] -z-10"></div>
+    </Wrapper>
   )
 }
 

@@ -32,22 +32,25 @@ export const Project = ({
   ...rest
 }: ProjectProps) => {
   return (
-    <div className={clsx("grid grid-cols-1 lg:grid-cols-2 items-center", className)} {...rest}>
+    <div className={clsx("grid grid-cols-1 lg:grid-cols-2 lg:items-center ", className)} {...rest}>
       <div
-        className={clsx("max-w-md", {
-          "lg:col-start-2 lg:row-start-1": layout === "image-left",
+        className={clsx(" mx-auto", {
+          "lg:col-start-2 lg:row-start-1 ": layout === "image-left",
         })}
       >
-        <Typography as="span" className="text-primary font-mono tracking-wide font-bold text-sm">
+        <Typography
+          as="span"
+          className="text-primary font-mono tracking-wide font-bold text-sm  block "
+        >
           {subheading}
         </Typography>
         <a href="https://code.dmrk.dev" target="_blank" rel="noreferrer">
-          <Typography as="p" className="font-mono  font-medium  text-4xl mt-2 tracking-tighter">
+          <Typography as="p" className="font-mono  font-medium  text-4xl mt-2 tracking-tighter  ">
             {heading}
           </Typography>
         </a>
         {(github || figma) && (
-          <div className="flex gap-6 mt-5 ">
+          <div className="flex gap-8 mt-5 ">
             {github && (
               <a href={github} target="_blank" rel="noreferrer noindex nofollow">
                 <Github className="w-6 h-6 brightness-75 hover:brightness-100 transition hover:-translate-y-px" />
@@ -67,7 +70,7 @@ export const Project = ({
           className=" tracking-wide text-neutral-300 mt-5 max-w-xl lg:max-w-lg leading-[180%]"
           dangerouslySetInnerHTML={{ __html: content }}
         />
-        <ul className="flex gap-5  flex-wrap  justify-center lg:justify-start lg:w-fit lg:max-w-lg border-b-0   p-2  rounded-lg border bg-gradient-to-r from-transparent  overflow-hidden to-primary-darker/20  border-white/5 relative mt-5">
+        <ul className="flex gap-5  flex-wrap  justify-center lg:justify-start mx-auto lg:mx-0 md:w-fit lg:max-w-lg border-b-0   p-3.5 lg:p-2.5  rounded-lg border bg-gradient-to-r from-transparent  overflow-hidden to-primary-darker/20  border-white/5 relative mt-5">
           <BorderSvg className="absolute bottom-0   inset-x-0 w-full animate-bottomBorderFade " />
           {stack.map((tag, i) => {
             const logo = logos.find((logo) => logo.name === tag)
@@ -92,7 +95,7 @@ export const Project = ({
           href={link}
           target="_blank"
           rel="noreferrer nofollow noindex"
-          className="block relative h-[inherit]"
+          className="block relative "
         >
           <NextImage
             src={image}

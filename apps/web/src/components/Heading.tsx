@@ -3,6 +3,7 @@ import clsx from "clsx"
 
 interface HeadingProps extends React.HTMLAttributes<HTMLDivElement> {
   subheading?: string
+  bodyClass?: string
   heading?: string
   headingTag?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
   highlight?: string
@@ -14,6 +15,7 @@ const Heading = ({
   heading,
   body,
   className,
+  bodyClass,
   headingTag = "h2",
   ...rest
 }: HeadingProps) => {
@@ -50,9 +52,13 @@ const Heading = ({
       {body && (
         <Typography
           as="p"
-          className={clsx("font-normal text-base  text-primary-superlight/80  leading-[185%]", {
-            "mt-4": heading,
-          })}
+          className={clsx(
+            "font-normal text-base  text-primary-superlight/80  leading-[185%]",
+            {
+              "mt-4": heading,
+            },
+            bodyClass
+          )}
         >
           {body}
         </Typography>

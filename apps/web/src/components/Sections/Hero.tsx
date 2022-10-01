@@ -16,8 +16,11 @@ interface HeroProps {}
 
 const Hero: FC<HeroProps> = () => {
   return (
-    <Wrapper className="text-neutral-100 font-sans mb-28 relative text-left md:text-center">
-      <Navbar className="mt-10 z-20 relative" />
+    <Wrapper
+      className="text-neutral-100 font-sans relative text-left md:text-center"
+      padding="bottom"
+    >
+      <Navbar className="pt-6 lg:pt-8 z-20 relative" />
       <Background className="absolute top-0  left-0  w-full h-full -z-10 " />
       <div className="flex items-center justify-center mt-28  md:mt-36 gap-2 md:gap-4 max-w-3xl flex-wrap mx-auto">
         {logos.map((logo, i) => (
