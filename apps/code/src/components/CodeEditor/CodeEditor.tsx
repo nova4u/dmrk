@@ -1,15 +1,15 @@
-import React, { FC } from "react";
-import dynamic from "next/dynamic";
-import colors from "tailwindcss/colors";
-import clsx from "clsx";
-import "@uiw/react-textarea-code-editor/dist.css";
+import React, { FC } from "react"
+import dynamic from "next/dynamic"
+import colors from "tailwindcss/colors"
+import clsx from "clsx"
+import "@uiw/react-textarea-code-editor/dist.css"
 
 interface CodeEditorProps {
-  language: string;
-  fontSize: string;
-  noise: boolean;
-  font?: string;
-  className?: string;
+  language: string
+  fontSize: string
+  noise: boolean
+  font?: string
+  className?: string
 }
 
 const EditorTheme: { [key: string]: string } = {
@@ -23,28 +23,28 @@ const EditorTheme: { [key: string]: string } = {
   "--color-prettylights-syntax-sublimelinter-gutter-mark": colors.cyan[500],
   "--color-prettylights-syntax-string": colors.violet[400],
   "--color-prettylights-syntax-keyword": colors.sky[400],
-};
+}
 
 const CodeEditor = React.forwardRef<HTMLDivElement, CodeEditorProps>(
   ({ language, noise, font, fontSize, className }, ref) => {
     const [code, setCode] = React.useState(
       `function add(a: number, b: number) {\n  return a + b;\n}`
-    );
-    const [isLoading, setIsLoading] = React.useState(true);
-    const [title, setTitle] = React.useState(`Untitled`);
+    )
+    const [isLoading, setIsLoading] = React.useState(true)
+    const [title, setTitle] = React.useState(`Untitled`)
 
     const AreaCodeEditor = React.useMemo(
       () =>
         dynamic(
           () =>
             import("@uiw/react-textarea-code-editor").then((mod) => {
-              setIsLoading(false);
-              return mod.default;
+              setIsLoading(false)
+              return mod.default
             }),
           { ssr: false }
         ),
       []
-    );
+    )
 
     if (isLoading)
       return (
@@ -52,7 +52,7 @@ const CodeEditor = React.forwardRef<HTMLDivElement, CodeEditorProps>(
           <span className="loader mt-20 mx-auto"></span>
           <AreaCodeEditor />
         </>
-      );
+      )
 
     return (
       <div className="w-auto relative mx-auto flex justify-center">
@@ -105,13 +105,13 @@ const CodeEditor = React.forwardRef<HTMLDivElement, CodeEditorProps>(
           />
         </div>
       </div>
-    );
+    )
   }
-);
+)
 
-CodeEditor.displayName = "CodeEditor";
+CodeEditor.displayName = "CodeEditor"
 
-export default CodeEditor;
+export default CodeEditor
 
 const NoiseTexture: React.FC<{ className?: string }> = ({ className }) => {
   return (
@@ -127,5 +127,5 @@ const NoiseTexture: React.FC<{ className?: string }> = ({ className }) => {
       </filter>
       <rect width="100%" height="100%" filter="url(#noise)"></rect>
     </svg>
-  );
-};
+  )
+}

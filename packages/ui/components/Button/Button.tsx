@@ -1,19 +1,13 @@
-import * as React from "react";
-import clsx from "clsx";
+import * as React from "react"
+import clsx from "clsx"
 
 interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "outline";
-  color?: "primary" | "emerald" | "custom";
+  variant?: "primary" | "outline"
+  color?: "primary" | "emerald" | "custom"
 }
 
-export const Button = React.forwardRef<
-  HTMLButtonElement,
-  React.PropsWithChildren<ButtonProps>
->(
-  (
-    { children, className, variant = "primary", color = "primary", ...rest },
-    ref
-  ) => {
+export const Button = React.forwardRef<HTMLButtonElement, React.PropsWithChildren<ButtonProps>>(
+  ({ children, className, variant = "primary", color = "primary", ...rest }, ref) => {
     return (
       <button
         className={clsx(
@@ -32,9 +26,9 @@ export const Button = React.forwardRef<
       >
         {children}
       </button>
-    );
+    )
   }
-);
+)
 
-Button.displayName = "Button";
-export default Button;
+Button.displayName = "Button"
+export default Button

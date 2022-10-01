@@ -1,12 +1,12 @@
-import { Typography } from "@dmrk/ui";
-import clsx from "clsx";
+import { Typography } from "@dmrk/ui"
+import clsx from "clsx"
 
 interface HeadingProps extends React.HTMLAttributes<HTMLDivElement> {
-  subheading?: string;
-  heading?: string;
-  headingTag?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-  highlight?: string;
-  body?: string;
+  subheading?: string
+  heading?: string
+  headingTag?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
+  highlight?: string
+  body?: string
 }
 
 const Heading = ({
@@ -50,18 +50,15 @@ const Heading = ({
       {body && (
         <Typography
           as="p"
-          className={clsx(
-            "font-normal text-base  text-primary-superlight/80  leading-[185%]",
-            {
-              "mt-4": heading,
-            }
-          )}
+          className={clsx("font-normal text-base  text-primary-superlight/80  leading-[185%]", {
+            "mt-4": heading,
+          })}
         >
           {body}
         </Typography>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Heading;
+export default Heading

@@ -1,15 +1,9 @@
-import * as React from "react";
+import * as React from "react"
 
 interface BackgroundProps extends React.SVGProps<SVGSVGElement> {}
 
 const Background = (props: BackgroundProps) => (
-  <svg
-    width={1172}
-    height={601}
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
+  <svg width={1172} height={601} fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <mask
       id="e"
       style={{
@@ -104,6 +98,6 @@ const Background = (props: BackgroundProps) => (
       </linearGradient>
     </defs>
   </svg>
-);
+)
 
-export default Background;
+export default Background

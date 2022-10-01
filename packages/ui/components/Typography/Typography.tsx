@@ -1,16 +1,16 @@
-import clsx from "clsx";
-import React from "react";
+import clsx from "clsx"
+import React from "react"
 
 type TypographyOwnProps<E extends React.ElementType = React.ElementType> = {
-  children: string | React.ReactNode;
-  unStyled?: boolean;
-  as?: E;
-};
+  children: string | React.ReactNode
+  unStyled?: boolean
+  as?: E
+}
 
 type TypographyProps<E extends React.ElementType> = TypographyOwnProps<E> &
-  Omit<React.ComponentProps<E>, keyof TypographyOwnProps>;
+  Omit<React.ComponentProps<E>, keyof TypographyOwnProps>
 
-const __DEFAULT_ELEMENT__ = "h2";
+const __DEFAULT_ELEMENT__ = "h2"
 
 function Typography<E extends React.ElementType = typeof __DEFAULT_ELEMENT__>({
   children,
@@ -19,10 +19,8 @@ function Typography<E extends React.ElementType = typeof __DEFAULT_ELEMENT__>({
   unStyled = false,
   ...props
 }: TypographyProps<E>) {
-  const Component = as || __DEFAULT_ELEMENT__;
-  const isHeading = ["h1", "h2", "h3", "h4", "h5", "h6"].includes(
-    Component as string
-  );
+  const Component = as || __DEFAULT_ELEMENT__
+  const isHeading = ["h1", "h2", "h3", "h4", "h5", "h6"].includes(Component as string)
 
   return (
     <Component
@@ -37,7 +35,7 @@ function Typography<E extends React.ElementType = typeof __DEFAULT_ELEMENT__>({
     >
       {children}
     </Component>
-  );
+  )
 }
 
-export default Typography;
+export default Typography

@@ -65,4 +65,4 @@ export const logos = [
     alt: "Figma logo",
     width: 72.14,
   },
-];
+]

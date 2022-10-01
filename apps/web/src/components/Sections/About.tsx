@@ -1,10 +1,10 @@
-import { FC } from "react";
-import { default as NextImage } from "next/future/image";
-import { Wrapper } from "@dmrk/ui";
-import { Heading, Background } from "@components/index";
+import { FC } from "react"
+import { default as NextImage } from "next/future/image"
+import { Wrapper } from "@dmrk/ui"
+import { Heading, Background } from "@components/index"
 
 interface AboutProps {
-  img: string;
+  img: string
 }
 
 const About: FC<AboutProps> = ({ img }) => {
@@ -35,7 +35,7 @@ Let's get to the point, I started as an UI Designer and i did pretty good IMO, I
         </div>
       </Wrapper>
     </section>
-  );
-};
+  )
+}
 
-export default About;
+export default About

@@ -1,21 +1,20 @@
-import { FC } from "react";
-import { default as NextImage } from "next/future/image";
-import { Typography } from "@dmrk/ui";
-import { Figma, Github } from "@dmrk/ui/icons";
-import clsx from "clsx";
-import { logos } from "@lib/data";
+import { Typography } from "@dmrk/ui"
+import { Figma, Github } from "@dmrk/ui/icons"
+import { logos } from "@lib/data"
+import clsx from "clsx"
+import { default as NextImage } from "next/future/image"
 
 interface ProjectProps extends React.HTMLAttributes<HTMLDivElement> {
-  layout: "image-left" | "image-right";
-  title: string;
-  link: string;
-  subheading: string;
-  heading: string;
-  content: string;
-  image: string; // Figma Project URL
-  stack: string[]; // Stack used
-  github?: string; // Github Project URL
-  figma?: string; // Figma Project URL
+  layout: "image-left" | "image-right"
+  title: string
+  link: string
+  subheading: string
+  heading: string
+  content: string
+  image: string // Figma Project URL
+  stack: string[] // Stack used
+  github?: string // Github Project URL
+  figma?: string // Figma Project URL
 }
 
 export const Project = ({
@@ -33,40 +32,24 @@ export const Project = ({
   ...rest
 }: ProjectProps) => {
   return (
-    <div
-      className={clsx(
-        "grid grid-cols-1 lg:grid-cols-2 items-center",
-        className
-      )}
-      {...rest}
-    >
+    <div className={clsx("grid grid-cols-1 lg:grid-cols-2 items-center", className)} {...rest}>
       <div
         className={clsx("max-w-md", {
           "lg:col-start-2 lg:row-start-1": layout === "image-left",
         })}
       >
-        <Typography
-          as="span"
-          className="text-primary font-mono tracking-wide font-bold text-sm"
-        >
+        <Typography as="span" className="text-primary font-mono tracking-wide font-bold text-sm">
           {subheading}
         </Typography>
         <a href="https://code.dmrk.dev" target="_blank" rel="noreferrer">
-          <Typography
-            as="p"
-            className="font-mono  font-medium  text-4xl mt-2 tracking-tighter"
-          >
+          <Typography as="p" className="font-mono  font-medium  text-4xl mt-2 tracking-tighter">
             {heading}
           </Typography>
         </a>
         {(github || figma) && (
           <div className="flex gap-6 mt-5 ">
             {github && (
-              <a
-                href={github}
-                target="_blank"
-                rel="noreferrer noindex nofollow"
-              >
+              <a href={github} target="_blank" rel="noreferrer noindex nofollow">
                 <Github className="w-6 h-6 brightness-75 hover:brightness-100 transition hover:-translate-y-px" />
               </a>
             )}
@@ -84,16 +67,16 @@ export const Project = ({
           className=" tracking-wide text-neutral-300 mt-5 max-w-xl lg:max-w-lg leading-[180%]"
           dangerouslySetInnerHTML={{ __html: content }}
         />
-        <ul className="flex gap-5  flex-wrap  justify-center lg:justify-start lg:w-fit lg:max-w-lg border-b-0   p-2  rounded-lg border bg-gradient-to-r from-transparent  overflow-hidden to-primary-darker/50  border-white/5 relative mt-5">
-          <BorderSvg className="absolute bottom-0   inset-x-0 w-full animate-bottomBorderFade" />
+        <ul className="flex gap-5  flex-wrap  justify-center lg:justify-start lg:w-fit lg:max-w-lg border-b-0   p-2  rounded-lg border bg-gradient-to-r from-transparent  overflow-hidden to-primary-darker/20  border-white/5 relative mt-5">
+          <BorderSvg className="absolute bottom-0   inset-x-0 w-full animate-bottomBorderFade " />
           {stack.map((tag, i) => {
-            const logo = logos.find((logo) => logo.name === tag);
-            if (!logo) return;
+            const logo = logos.find((logo) => logo.name === tag)
+            if (!logo) return
             return (
               <li className="w-24 h-6 lg:h-8     flex-wrap relative " key={i}>
                 <NextImage src={logo.src} fill alt={logo.alt} />
               </li>
-            );
+            )
           })}
         </ul>
       </div>
@@ -122,15 +105,12 @@ export const Project = ({
         </a>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Project;
+export default Project
 
-export const BorderSvg = ({
-  className,
-  ...rest
-}: React.SVGProps<SVGSVGElement>) => (
+export const BorderSvg = ({ className, ...rest }: React.SVGProps<SVGSVGElement>) => (
   <svg
     width="154"
     height="1"
@@ -140,13 +120,7 @@ export const BorderSvg = ({
     xmlns="http://www.w3.org/2000/svg"
     {...rest}
   >
-    <ellipse
-      cx="76.8936"
-      cy="0.249512"
-      rx="76.4551"
-      ry="0.25"
-      fill="url(#paint0_linear_114_251)"
-    />
+    <ellipse cx="76.8936" cy="0.249512" rx="76.4551" ry="0.25" fill="url(#paint0_linear_114_251)" />
     <defs>
       <linearGradient
         id="paint0_linear_114_251"
@@ -163,4 +137,4 @@ export const BorderSvg = ({
       </linearGradient>
     </defs>
   </svg>
-);
+)

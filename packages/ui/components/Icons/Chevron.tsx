@@ -1,5 +1,5 @@
-import clsx from "clsx";
-import React, { FC } from "react";
+import clsx from "clsx"
+import React, { FC } from "react"
 
 interface ChevronProps extends React.SVGProps<SVGSVGElement> {}
 
@@ -19,13 +19,9 @@ const Chevron: FC<ChevronProps> = ({ className, ...rest }) => {
         className
       )}
     >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M4.5 15.75l7.5-7.5 7.5 7.5"
-      />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
     </svg>
-  );
-};
+  )
+}
 
-export default Chevron;
+export default Chevron

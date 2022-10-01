@@ -1,20 +1,16 @@
-import React, { FC } from "react";
-import clsx from "clsx";
-import Logotype from "../Logotype/Logotype";
-import Chevron from "../Icons/Chevron";
-import Github from "../Icons/Github";
-import Linkedin from "../Icons/Linkedin";
+import React, { FC } from "react"
+import clsx from "clsx"
+import Logotype from "../Logotype/Logotype"
+import Chevron from "../Icons/Chevron"
+import Github from "../Icons/Github"
+import Linkedin from "../Icons/Linkedin"
 
 interface NavbarProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 const Navbar: FC<NavbarProps> = ({ className, ...rest }) => {
-  const iconClasses =
-    "text-neutral-200 hover:text-primary w-5 h-5 transition ease-out";
+  const iconClasses = "text-neutral-200 hover:text-primary w-5 h-5 transition ease-out"
   return (
-    <div
-      className={clsx("flex w-full items-center justify-between ", className)}
-      {...rest}
-    >
+    <div className={clsx("flex w-full items-center justify-between ", className)} {...rest}>
       <Logotype />
       <div className="flex flex-wrap gap-4 justify-end">
         <div className="flex space-x-6 items-center">
@@ -46,7 +42,7 @@ const Navbar: FC<NavbarProps> = ({ className, ...rest }) => {
         </a>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar
