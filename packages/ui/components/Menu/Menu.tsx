@@ -1,41 +1,38 @@
-import React, { FC, ReactPortal } from "react";
-import * as Popover from "@radix-ui/react-popover";
-import clsx from "clsx";
-import Chevron from "../Icons/Chevron";
+import * as Popover from "@radix-ui/react-popover"
+import clsx from "clsx"
+import React from "react"
+import Chevron from "../Icons/Chevron"
 
 const isOptionCustomMenuOption = (option: any): option is CustomMenuOption => {
   if (typeof option === "object") {
-    return option.hasOwnProperty("el");
+    return "el" in option
   }
-  return false;
-};
+  return false
+}
 
 type CustomElProps = {
-  key: number;
-};
-export type CustomMenuOption = { el: (data: CustomElProps) => JSX.Element };
+  key: number
+}
+export type CustomMenuOption = { el: (data: CustomElProps) => JSX.Element }
 
 interface MenuProps<IncomingOptions> {
-  closeOnClick?: boolean;
-  onSelect?: (
-    index: number,
-    option: IncomingOptions | CustomMenuOption
-  ) => void;
-  active?: number;
-  openOnMouseOver?: boolean;
-  options: IncomingOptions[] | CustomMenuOption[];
-  label?: (props: { onMouseOver?: () => void }) => JSX.Element;
-  showLabel?: boolean;
-  className?: string;
-  icon?: React.ReactNode;
-  containerClasses?: string;
+  closeOnClick?: boolean
+  onSelect?: (index: number, option: IncomingOptions | CustomMenuOption) => void
+  active?: number
+  openOnMouseOver?: boolean
+  options: IncomingOptions[] | CustomMenuOption[]
+  label?: (props: { onMouseOver?: () => void }) => JSX.Element
+  showLabel?: boolean
+  className?: string
+  icon?: React.ReactNode
+  containerClasses?: string
   controller?: {
-    open: boolean;
-    setOpen: (open: boolean) => void;
-  };
-  onOpenAutoFocus?: (e: Event) => void;
-  onCloseAutoFocus?: (e: Event) => void;
-  size?: "sm" | "md" | "lg" | "auto";
+    open: boolean
+    setOpen: (open: boolean) => void
+  }
+  onOpenAutoFocus?: (e: Event) => void
+  onCloseAutoFocus?: (e: Event) => void
+  size?: "sm" | "md" | "lg" | "auto"
 }
 
 const Menu = <IncomingOptions,>({
@@ -54,16 +51,16 @@ const Menu = <IncomingOptions,>({
   controller,
   size = "auto",
 }: MenuProps<IncomingOptions>) => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false)
 
-  const setIsOpen = (v: boolean) => controller?.setOpen(v) || setOpen(v);
+  const setIsOpen = (v: boolean) => controller?.setOpen(v) || setOpen(v)
 
-  const isOpen = controller ? controller.open : open;
+  const isOpen = controller ? controller.open : open
 
   const handleClick = (i: number, option: IncomingOptions) => {
-    if (closeOnClick) setIsOpen(false);
-    if (onSelect) onSelect(i, option);
-  };
+    if (closeOnClick) setIsOpen(false)
+    if (onSelect) onSelect(i, option)
+  }
 
   return (
     <div className={containerClasses}>
@@ -84,7 +81,7 @@ const Menu = <IncomingOptions,>({
           {label ? (
             label({
               onMouseOver: () => {
-                if (openOnMouseOver) setIsOpen(true);
+                if (openOnMouseOver) setIsOpen(true)
               },
             })
           ) : (
@@ -98,9 +95,7 @@ const Menu = <IncomingOptions,>({
                   {showLabel &&
                   active !== undefined &&
                   !isOptionCustomMenuOption(options[active]) ? (
-                    <span className="text-left truncate">
-                      {options[active] as React.ReactNode}
-                    </span>
+                    <span className="text-left truncate">{options[active] as React.ReactNode}</span>
                   ) : (
                     <span className="h-4 block"></span>
                   )}
@@ -134,8 +129,7 @@ const Menu = <IncomingOptions,>({
                       className={clsx(
                         "block text-left text-sm rounded-md font-semibold hocus:outline-none transition duration-75 px-3 py-1",
                         active !== undefined && {
-                          "text-emerald-400 hocus:ring-emerald-600 hocus:ring-1":
-                            active === i,
+                          "text-emerald-400 hocus:ring-emerald-600 hocus:ring-1": active === i,
                           "text-neutral-500 hocus:text-white ": active !== i,
                         }
                       )}
@@ -144,19 +138,19 @@ const Menu = <IncomingOptions,>({
                     >
                       {item}
                     </button>
-                  );
+                  )
                 } else {
-                  if (!isOptionCustomMenuOption(item)) return;
+                  if (!isOptionCustomMenuOption(item)) return
                   return item.el({
                     key: i,
-                  });
+                  })
                 }
               })}
           </Popover.Content>
         </Popover.Portal>
       </Popover.Root>
     </div>
-  );
-};
+  )
+}
 
-export default Menu;
+export default Menu

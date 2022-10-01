@@ -1,10 +1,10 @@
-import { Project, Heading } from "@components/index";
-import { Wrapper } from "@dmrk/ui";
-import React, { FC } from "react";
+import { Heading, Project } from "@components/index"
+import { Wrapper } from "@dmrk/ui"
+import { FC } from "react"
 
 interface ProjectsProps {}
 
-const Projects: FC<ProjectsProps> = ({}) => {
+const Projects: FC<ProjectsProps> = () => {
   return (
     <section className="  py-10 text-white ">
       <Wrapper className="mt-20 ">
@@ -75,7 +75,7 @@ const Projects: FC<ProjectsProps> = ({}) => {
         </div>
       </Wrapper>
     </section>
-  );
-};
+  )
+}
 
-export default Projects;
+export default Projects

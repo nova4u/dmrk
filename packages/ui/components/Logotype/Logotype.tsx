@@ -1,10 +1,10 @@
-import clsx from "clsx";
-import Logo from "../../assets/dmrk.jpg";
-import React, { FC, HTMLAttributes } from "react";
-import Image from "next/future/image";
+import clsx from "clsx"
+import Image from "next/future/image"
+import { FC, HTMLAttributes } from "react"
+import Logo from "../../assets/dmrk.jpg"
 
 interface LogotypeProps extends HTMLAttributes<HTMLDivElement> {
-  textClassName?: string;
+  textClassName?: string
 }
 
 const Logotype: FC<LogotypeProps> = ({ textClassName, className, ...rest }) => {
@@ -33,7 +33,7 @@ const Logotype: FC<LogotypeProps> = ({ textClassName, className, ...rest }) => {
         Denis Marushchak
       </span>
     </div>
-  );
-};
+  )
+}
 
-export default Logotype;
+export default Logotype

@@ -1,20 +1,20 @@
-import React, { FC } from "react";
-import { default as NextImage } from "next/image";
-import { Navbar, Wrapper } from "@dmrk/ui";
-import { Heading, Background } from "@components/index";
-import Link from "next/link";
-import { logos } from "@lib/data";
+import { Background, Heading } from "@components/index"
+import { Navbar, Wrapper } from "@dmrk/ui"
+import { logos } from "@lib/data"
+import { default as NextImage } from "next/image"
+import Link from "next/link"
+import { FC } from "react"
 
 type Logo = {
-  name: string;
-  src: string;
-  alt: string;
-  width: number;
-};
+  name: string
+  src: string
+  alt: string
+  width: number
+}
 
 interface HeroProps {}
 
-const Hero: FC<HeroProps> = ({}) => {
+const Hero: FC<HeroProps> = () => {
   return (
     <Wrapper className="text-neutral-100 font-sans mb-28 relative text-left md:text-center">
       <Navbar className="mt-10 z-20 relative" />
@@ -52,7 +52,7 @@ const Hero: FC<HeroProps> = ({}) => {
         </a>
       </Link>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero

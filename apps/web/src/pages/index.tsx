@@ -1,7 +1,7 @@
-import { NextPage } from "next";
-import { About, Hero, Projects, Contact } from "@components/Sections";
+import { About, Contact, Hero, Projects } from "@components/Sections"
+import { NextPage } from "next"
 
-const Index: NextPage = ({}) => {
+const Index: NextPage = () => {
   return (
     <>
       <Hero />
@@ -9,7 +9,7 @@ const Index: NextPage = ({}) => {
       <Projects />
       <Contact />
     </>
-  );
-};
+  )
+}
 
-export default Index;
+export default Index
