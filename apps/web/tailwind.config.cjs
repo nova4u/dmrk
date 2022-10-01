@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     ...tailwindConfig.theme,
     extend: {
-      ...tailwindConfig.theme.extends,
+      ...tailwindConfig.theme.extend,
       colors: {
         primary: {
           superlight: "#F0FEFF",
