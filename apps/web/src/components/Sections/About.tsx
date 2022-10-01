@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { default as NextImage } from "next/image";
+import { default as NextImage } from "next/future/image";
 import { Wrapper } from "@dmrk/ui";
 import { Heading, Background } from "@components/index";
 
