@@ -25,18 +25,16 @@ module.exports = {
       keyframes: {
         bottomBorderFade: {
           "0%": {
-            transform: "translate3d(-40%, 0, 0) scaleX(110%)",
+            transform: "translate3d(-40%, 0, 0) scaleX(120%)",
             transformOrigin: "left",
-            filter: "blur(1px)",
           },
 
           "50%": {
             transform: "translate3d(0%, 0, 0) scaleX(100%)",
           },
           "100%": {
-            transform: "translate3d(40%, 0, 0) scaleX(120%)",
+            transform: "translate3d(40%, 0, 0) scaleX(140%)",
             transformOrigin: "right",
-            filter: "blur(1px)",
           },
         },
       },
