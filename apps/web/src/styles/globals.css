@@ -11,8 +11,18 @@ body {
   @apply antialiased min-h-screen bg-primary-darkest;
 }
 
+.form__field:focus ~ .form__label,
+.form__field:not(:placeholder-shown).form__field:not(:focus) ~ .form__label {
+  @apply bg-primary-darkest text-primary-superlight/30;
+  transform: translateX(-4px) translateY(-24px) scale(80%);
+}
+
 .highlight-text {
   @apply bg-gradient-to-r bg-clip-text text-transparent  from-primary-light  to-primary;
+}
+
+.highlight-md {
+  @apply tracking-wide bg-gradient-to-r from-primary-dark  to-primary font-medium text-transparent bg-clip-text;
 }
 
 .gradient-box {

@@ -22,13 +22,10 @@ function FormField<E extends React.ElementType = typeof __DEFAULT_ELEMENT__>({
   const Component = as || __DEFAULT_ELEMENT__
 
   return (
-    <div>
-      <label htmlFor={name} className="sr-only">
-        {name}
-      </label>
+    <div className="relative">
       <Component
         className={clsx(
-          `block   focus:outline-none focus:ring-1 transition focus:ring-primary bg-transparent border rounded-lg w-full h-10 pl-5 border-primary-darker/40  text-sm font-bold text-primary-light placeholder:text-primary-superlight/50 tracking-normal`,
+          `form__field block   focus:outline-none focus:ring-1 transition focus:ring-primary bg-transparent border rounded-lg w-full h-10 pl-5 border-primary-darker/40  text-sm font-medium text-primary-light placeholder:opacity-0 peer `,
           {
             "resize-none h-20 pt-2": as === "textarea",
           },
@@ -38,6 +35,12 @@ function FormField<E extends React.ElementType = typeof __DEFAULT_ELEMENT__>({
       >
         {children}
       </Component>
+      <label
+        htmlFor={name}
+        className="form__label absolute top-1.5 left-3 first-letter:uppercase text-primary-superlight/50  transition-transform ease-out pointer-events-none  origin-left py-1 px-1.5 block rounded-[inherit] text-sm"
+      >
+        {name}
+      </label>
     </div>
   )
 }

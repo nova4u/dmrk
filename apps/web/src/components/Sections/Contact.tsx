@@ -1,8 +1,8 @@
 import { Background, Heading } from "@components/index"
 import { Button, FormField, Wrapper } from "@dmrk/ui"
 import clsx from "clsx"
-import { AnimatePresence, motion } from "framer-motion"
-import React, { FC, FormEvent } from "react"
+import { AnimatePresence, m, useAnimationControls, useInView } from "framer-motion"
+import React, { FC, FormEvent, useEffect } from "react"
 
 interface ContactProps {}
 
@@ -21,6 +21,17 @@ const Contact: FC<ContactProps> = (props) => {
   const [formData, setFormData] = React.useState(__DEFAULT_FORM_DATA__)
   const [error, setError] = React.useState<string | null>(null)
   const [success, setSuccess] = React.useState(false)
+  const controls = useAnimationControls()
+  const textRef = React.useRef(null)
+  const isInView = useInView(textRef, {
+    amount: 1,
+    once: true,
+  })
+
+  useEffect(() => {
+    if (!isInView) return
+    controls.start("animate")
+  }, [isInView])
 
   const handleSubmit = async (e: FormEvent) => {
     setError(null)
@@ -64,8 +75,10 @@ const Contact: FC<ContactProps> = (props) => {
   }
 
   return (
-    <Wrapper className="text-primary-superlight text-left md:text-center  relative">
+    <Wrapper className="text-primary-superlight text-left md:text-center  relative" id="contact">
       <Heading
+        ref={textRef}
+        controls={controls}
         className=""
         subheading="contact"
         heading="Always ready to talk."
@@ -78,7 +91,7 @@ const Contact: FC<ContactProps> = (props) => {
           className="p-10 bg-primary-darkest gradient-box w-auto  rounded-lg"
           onSubmit={handleSubmit}
         >
-          <div className="space-y-4">
+          <div className="space-y-8">
             <FormField
               as="input"
               type="text"
@@ -116,7 +129,7 @@ const Contact: FC<ContactProps> = (props) => {
           </div>
           <AnimatePresence initial={false}>
             {error !== null && (
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, height: 0 }}
                 exit={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
@@ -128,12 +141,12 @@ const Contact: FC<ContactProps> = (props) => {
                 className="font-medium rounded-md bg-rose-900/30 border border-rose-600/20 text-rose-400 overflow-hidden "
               >
                 <div className="p-2.5">{error}</div>
-              </motion.div>
+              </m.div>
             )}
           </AnimatePresence>
           <AnimatePresence initial={false}>
             {success && (
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, height: 0 }}
                 exit={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
@@ -147,13 +160,13 @@ const Contact: FC<ContactProps> = (props) => {
                 <div className="p-2.5">
                   Thanks! Your message has been delievered. I will reply ASAP.
                 </div>
-              </motion.div>
+              </m.div>
             )}
           </AnimatePresence>
 
           <Button className="w-full hover:-translate-y-px mt-4 ">Send</Button>
         </form>
-        <motion.div
+        <m.div
           animate={{
             opacity: formData.email ? 1 : 0,
             y: formData.email ? 0 : -40,
@@ -166,25 +179,37 @@ const Contact: FC<ContactProps> = (props) => {
               "bg-emerald-600": emailValidation(formData.email),
             }
           )}
-        ></motion.div>
-        <motion.div
+        ></m.div>
+        <m.div
           animate={{
             opacity: formData.message ? 1 : 0.3,
             y: formData.message ? 0 : -40,
             scale: formData.message ? 1 : 0.5,
           }}
           className="h-20 w-20 md:w-40 md:h-40 absolute  bottom-0 right-1/2 bg-blue-600 rounded-full blur-[50px] md:blur-[90px] -z-10"
-        ></motion.div>
-        <motion.div
+        ></m.div>
+        <m.div
           animate={{
             opacity: formData.name ? 1 : 0.3,
             y: formData.name ? 0 : 50,
             scale: formData.name ? 1 : 0.8,
           }}
           className="h-20 w-20 md:w-40 md:h-40 absolute  md:bottom-20 top-0 right-0 bg-indigo-500 rounded-full blur-[50px] md:blur-[90px] -z-10"
-        ></motion.div>
+        ></m.div>
       </div>
-      <Background className="absolute top-20 left-1/5 w-full h-full -z-10" />
+      <m.div
+        className="absolute top-20 left-1/5 w-full h-full -z-10"
+        whileInView={{ x: -90 }}
+        initial={{ x: 0 }}
+        transition={{
+          // @ts-ignore Wrong Types on framer motion
+          repeat: "Infinity" as number,
+          repeatType: "reverse",
+          duration: 20,
+        }}
+      >
+        <Background />
+      </m.div>
     </Wrapper>
   )
 }

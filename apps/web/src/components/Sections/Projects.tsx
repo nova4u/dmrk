@@ -1,13 +1,36 @@
 import { Heading, Project } from "@components/index"
 import { Wrapper } from "@dmrk/ui"
-import { FC } from "react"
+import { useAnimationControls, useInView } from "framer-motion"
+import { FC, useEffect, useRef } from "react"
 
 interface ProjectsProps {}
 
 const Projects: FC<ProjectsProps> = () => {
+  const textRef = useRef(null)
+  const isTextInView = useInView(textRef, {
+    amount: 0.4,
+    once: true,
+  })
+  const controls = useAnimationControls()
+
+  useEffect(() => {
+    if (!isTextInView) return
+    controls.start((index) => ({
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        delay: index * 0.2,
+        duration: 0.5,
+      },
+    }))
+  }, [isTextInView])
+
   return (
     <Wrapper className="text-primary-superlight ">
       <Heading
+        ref={textRef}
+        controls={controls}
         className="max-w-xl md:text-center mx-auto w-full"
         subheading={"Featured"}
         highlight="projects."

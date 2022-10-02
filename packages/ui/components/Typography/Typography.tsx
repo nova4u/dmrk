@@ -1,5 +1,5 @@
 import clsx from "clsx"
-import React from "react"
+import React, { forwardRef } from "react"
 
 type TypographyOwnProps<E extends React.ElementType = React.ElementType> = {
   children: string | React.ReactNode
@@ -12,13 +12,10 @@ type TypographyProps<E extends React.ElementType> = TypographyOwnProps<E> &
 
 const __DEFAULT_ELEMENT__ = "h2"
 
-function Typography<E extends React.ElementType = typeof __DEFAULT_ELEMENT__>({
-  children,
-  as,
-  className,
-  unStyled = false,
-  ...props
-}: TypographyProps<E>) {
+function Typography<E extends React.ElementType = typeof __DEFAULT_ELEMENT__>(
+  { children, as, className, unStyled = false, ...props }: TypographyProps<E>,
+  ref: React.Ref<E>
+) {
   const Component = as || __DEFAULT_ELEMENT__
   const isHeading = ["h1", "h2", "h3", "h4", "h5", "h6"].includes(Component as string)
 
@@ -31,6 +28,7 @@ function Typography<E extends React.ElementType = typeof __DEFAULT_ELEMENT__>({
         },
         className
       )}
+      ref={ref}
       {...props}
     >
       {children}
@@ -38,4 +36,4 @@ function Typography<E extends React.ElementType = typeof __DEFAULT_ELEMENT__>({
   )
 }
 
-export default Typography
+export default forwardRef(Typography)
