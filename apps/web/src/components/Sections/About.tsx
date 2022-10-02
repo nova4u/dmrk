@@ -6,7 +6,7 @@ import {
   useAnimationControls,
   useInView,
   useScroll,
-  useTransform
+  useTransform,
 } from "framer-motion"
 import { default as NextImage } from "next/future/image"
 import { FC, useEffect, useRef } from "react"
@@ -59,7 +59,7 @@ const About: FC<AboutProps> = ({ img }) => {
           bodyClass="text-left"
           heading={
             <>
-              About little bit about <span className="highlight-text">myself.</span>
+              A little bit about <span className="highlight-text">myself.</span>
             </>
           }
           body={
