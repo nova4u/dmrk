@@ -54,11 +54,14 @@ const Contact: FC<ContactProps> = (props) => {
     }
 
     try {
-      await fetch(`https://formspree.io/f/xjvzwdjj`, {
-        method: "POST",
-        mode: "no-cors",
-        body: JSON.stringify(formData),
-      })
+      await fetch(
+        `https://api-ems-pub-eu10.erply.com/api/v1/form/d309d42d-244f-4752-968c-c1a2b19ab330`,
+        {
+          method: "POST",
+          mode: "no-cors",
+          body: JSON.stringify({ ...formData, targetAddress: "denismar322@gmail.com" }),
+        }
+      )
       setError(null)
       setSuccess(true)
       setTimeout(() => {
