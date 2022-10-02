@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 interface GithubProps extends React.SVGProps<SVGSVGElement> {}
 
@@ -15,6 +15,6 @@ const Github = (props: GithubProps) => (
       fill="currentColor"
     />
   </svg>
-);
+)
 
-export default Github;
+export default Github

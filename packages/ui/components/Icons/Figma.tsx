@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 interface FigmaProps extends React.SVGProps<SVGSVGElement> {}
 
@@ -42,6 +42,6 @@ const Figma = (props: FigmaProps) => (
       }}
     />
   </svg>
-);
+)
 
-export default Figma;
+export default Figma

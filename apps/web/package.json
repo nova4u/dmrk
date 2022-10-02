@@ -12,6 +12,7 @@
     "@dmrk/ui": "workspace:*",
     "autoprefixer": "^10.4.12",
     "clsx": "^1.2.1",
+    "framer-motion": "^7.5.1",
     "next": "12.3.0",
     "postcss": "^8.4.16",
     "react": "18.2.0",

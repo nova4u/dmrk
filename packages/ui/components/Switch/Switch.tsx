@@ -1,10 +1,10 @@
-import React, { FC } from "react";
-import * as SwitchPrimitive from "@radix-ui/react-switch";
+import * as SwitchPrimitive from "@radix-ui/react-switch"
+import { FC } from "react"
 
 interface SwitchProps {
-  label: string;
-  checked: boolean;
-  setChecked: (v: boolean) => void;
+  label: string
+  checked: boolean
+  setChecked: (v: boolean) => void
 }
 
 const Switch: FC<SwitchProps> = ({ label, checked, setChecked }) => {
@@ -27,7 +27,7 @@ const Switch: FC<SwitchProps> = ({ label, checked, setChecked }) => {
         {label}
       </label>
     </div>
-  );
-};
+  )
+}
 
-export default Switch;
+export default Switch

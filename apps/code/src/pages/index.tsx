@@ -1,41 +1,33 @@
-import React, { KeyboardEvent } from "react";
-import Head from "next/head";
-import { NextPage } from "next";
-import {
-  Wrapper,
-  Panel,
-  Switch,
-  Menu,
-  Typography,
-  Button,
-  Navbar,
-} from "@dmrk/ui";
-import { Settings, Text } from "@dmrk/ui/icons";
-import { CodeEditor } from "../components/";
-import CodeSettings from "../../settings.json";
-import ImageConverter from "@lib/ImageConverter";
+import React, { KeyboardEvent } from "react"
+import Head from "next/head"
+import { NextPage } from "next"
+import { Wrapper, Panel, Switch, Menu, Typography, Button, Navbar } from "@dmrk/ui"
+import { Settings, Text } from "@dmrk/ui/icons"
+import { CodeEditor } from "../components/"
+import CodeSettings from "../../settings.json"
+import ImageConverter from "@lib/ImageConverter"
 
-const { languages, fontFamily, fontSizes, headlines } = CodeSettings;
+const { languages, fontFamily, fontSizes, headlines } = CodeSettings
 
 export const Docs: NextPage = () => {
-  const panelRef = React.useRef<HTMLDivElement>(null);
-  const [search, setSearch] = React.useState("");
-  const [isLangMenuOpen, setIsLangMenuOpen] = React.useState(false);
-  const [noise, setNoise] = React.useState(false);
-  const [language, setLanguage] = React.useState<string>(`TSX`);
-  const [font, setFont] = React.useState<number>(0);
-  const [fontSize, setFontSize] = React.useState<string>(fontSizes[2]);
-  const codeRef = React.useRef<HTMLDivElement>(null);
+  const panelRef = React.useRef<HTMLDivElement>(null)
+  const [search, setSearch] = React.useState("")
+  const [isLangMenuOpen, setIsLangMenuOpen] = React.useState(false)
+  const [noise, setNoise] = React.useState(false)
+  const [language, setLanguage] = React.useState<string>(`TSX`)
+  const [font, setFont] = React.useState<number>(0)
+  const [fontSize, setFontSize] = React.useState<string>(fontSizes[2])
+  const codeRef = React.useRef<HTMLDivElement>(null)
 
   const handleFontChange = (i: number, option: string) => {
-    const fontHasBeenPreloaded = !fontFamily[i].url;
+    const fontHasBeenPreloaded = !fontFamily[i].url
     if (fontHasBeenPreloaded) {
-      return setFont(i);
+      return setFont(i)
     }
 
-    const fontAlreadyLoaded = document.fonts.check(`12px ${option}`);
+    const fontAlreadyLoaded = document.fonts.check(`12px ${option}`)
 
-    if (fontAlreadyLoaded) return setFont(i);
+    if (fontAlreadyLoaded) return setFont(i)
 
     new FontFace(option, `url(${fontFamily[i].url})`, {
       style: "normal",
@@ -44,22 +36,19 @@ export const Docs: NextPage = () => {
     })
       .load()
       .then((font) => {
-        document.fonts.add(font);
-        setFont(i);
+        document.fonts.add(font)
+        setFont(i)
       })
-      .catch((e) => console.log(e));
-  };
+      .catch((e) => console.log(e))
+  }
 
   const filteredLanguageList = React.useMemo(
-    () =>
-      languages.filter((lang) =>
-        lang.toLowerCase().includes(search.toLowerCase())
-      ),
+    () => languages.filter((lang) => lang.toLowerCase().includes(search.toLowerCase())),
     [search]
-  );
+  )
 
   const downloadAsPng = React.useCallback(async () => {
-    if (!codeRef.current) return;
+    if (!codeRef.current) return
     await ImageConverter.generate(
       {
         format: "png",
@@ -68,11 +57,11 @@ export const Docs: NextPage = () => {
         copyToClipboard: false,
       },
       codeRef.current
-    );
-  }, [font]);
+    )
+  }, [font])
 
   const copyToClipboard = React.useCallback(async () => {
-    if (!codeRef.current) return;
+    if (!codeRef.current) return
     await ImageConverter.generate(
       {
         format: "png",
@@ -81,11 +70,11 @@ export const Docs: NextPage = () => {
         copyToClipboard: true,
       },
       codeRef.current
-    );
-  }, [font]);
+    )
+  }, [font])
 
   const downloadAsSvg = React.useCallback(async () => {
-    if (!codeRef.current) return;
+    if (!codeRef.current) return
     await ImageConverter.generate(
       {
         format: "svg",
@@ -94,20 +83,20 @@ export const Docs: NextPage = () => {
         copyToClipboard: false,
       },
       codeRef.current
-    );
-  }, [font]);
+    )
+  }, [font])
 
   const handleSearchKeyDown = (e: KeyboardEvent) => {
-    const isFilteredToSingle = filteredLanguageList.length === 1;
+    const isFilteredToSingle = filteredLanguageList.length === 1
 
     if (e.code === "Enter" && isFilteredToSingle) {
-      setLanguage(filteredLanguageList[0]);
-      const target = e.target as HTMLInputElement;
-      target.blur();
-      setIsLangMenuOpen(false);
-      setSearch(filteredLanguageList[0]);
+      setLanguage(filteredLanguageList[0])
+      const target = e.target as HTMLInputElement
+      target.blur()
+      setIsLangMenuOpen(false)
+      setSearch(filteredLanguageList[0])
     }
-  };
+  }
 
   return (
     <Wrapper className="py-14 relative overflow-hidden">
@@ -133,18 +122,18 @@ export const Docs: NextPage = () => {
         <Menu
           active={languages.findIndex((option) => option === language)}
           onSelect={(_, option) => {
-            const selectedOption = languages.find((item) => item === option);
-            if (!selectedOption) return;
-            setLanguage(selectedOption);
-            setSearch(selectedOption);
+            const selectedOption = languages.find((item) => item === option)
+            if (!selectedOption) return
+            setLanguage(selectedOption)
+            setSearch(selectedOption)
           }}
           closeOnClick
           showLabel
           onOpenAutoFocus={(e) => {
-            e.preventDefault();
+            e.preventDefault()
           }}
           onCloseAutoFocus={(e) => {
-            e.preventDefault();
+            e.preventDefault()
           }}
           controller={{
             open: isLangMenuOpen,
@@ -156,8 +145,8 @@ export const Docs: NextPage = () => {
               placeholder={language}
               className="bg-transparent placeholder:text-slate-100 focus:placeholder-transparent"
               onChange={(e) => {
-                setIsLangMenuOpen(true);
-                setSearch(e.target.value);
+                setIsLangMenuOpen(true)
+                setSearch(e.target.value)
               }}
               onKeyDown={(e) => handleSearchKeyDown(e)}
               onFocus={() => setSearch("")}
@@ -171,9 +160,7 @@ export const Docs: NextPage = () => {
         />
         <Menu
           active={font}
-          onSelect={(i, option) =>
-            typeof option === "string" && handleFontChange(i, option)
-          }
+          onSelect={(i, option) => typeof option === "string" && handleFontChange(i, option)}
           closeOnClick
           showLabel={true}
           options={fontFamily.map((font) => font.name)}
@@ -238,24 +225,21 @@ export const Docs: NextPage = () => {
         />
       </Panel>
     </Wrapper>
-  );
-};
+  )
+}
 
 const Seo: React.FC<{}> = () => {
   return (
     <Head>
       <title>Code ScreenShot Generator | @dmrk</title>
-      <meta
-        name="description"
-        content="Generate code screenshots on the fly."
-      />
+      <meta name="description" content="Generate code screenshots on the fly." />
       <meta name="robots" content="follow, index" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
-  );
-};
+  )
+}
 
-export default Docs;
+export default Docs
 
 interface CircleProps extends React.SVGProps<SVGSVGElement> {}
 
@@ -283,14 +267,7 @@ const Circle = ({ className, ...rest }: CircleProps) => {
         stroke="url(#c)"
         strokeWidth="1.022"
       />
-      <circle
-        opacity=".6"
-        cx="268"
-        cy="166.959"
-        r="184.02"
-        stroke="url(#d)"
-        strokeWidth="1.267"
-      />
+      <circle opacity=".6" cx="268" cy="166.959" r="184.02" stroke="url(#d)" strokeWidth="1.267" />
       <defs>
         <linearGradient
           id="c"
@@ -325,10 +302,7 @@ const Circle = ({ className, ...rest }: CircleProps) => {
         >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-          <feGaussianBlur
-            stdDeviation="27"
-            result="effect1_foregroundBlur_27_138"
-          />
+          <feGaussianBlur stdDeviation="27" result="effect1_foregroundBlur_27_138" />
         </filter>
         <filter
           id="b"
@@ -341,12 +315,9 @@ const Circle = ({ className, ...rest }: CircleProps) => {
         >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-          <feGaussianBlur
-            stdDeviation="56.938"
-            result="effect1_foregroundBlur_27_138"
-          />
+          <feGaussianBlur stdDeviation="56.938" result="effect1_foregroundBlur_27_138" />
         </filter>
       </defs>
     </svg>
-  );
-};
+  )
+}

@@ -1,5 +1,5 @@
-import clsx from "clsx";
-import React, { FC } from "react";
+import clsx from "clsx"
+import React, { FC } from "react"
 
 interface TextProps extends React.SVGProps<SVGSVGElement> {}
 
@@ -36,7 +36,7 @@ const Text: FC<TextProps> = ({ className, ...rest }) => {
         fill="#ECFDF5"
       />
     </svg>
-  );
-};
+  )
+}
 
-export default Text;
+export default Text

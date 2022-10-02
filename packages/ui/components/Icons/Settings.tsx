@@ -1,5 +1,5 @@
-import clsx from "clsx";
-import React, { FC } from "react";
+import clsx from "clsx"
+import React, { FC } from "react"
 
 interface SettingsProps extends React.SVGProps<SVGSVGElement> {}
 
@@ -30,7 +30,7 @@ const Settings: FC<SettingsProps> = ({ className, ...rest }) => {
         fill="currentColor"
       />
     </svg>
-  );
-};
+  )
+}
 
-export default Settings;
+export default Settings
