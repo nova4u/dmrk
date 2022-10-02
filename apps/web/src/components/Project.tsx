@@ -16,7 +16,7 @@ interface ProjectProps extends React.HTMLAttributes<HTMLDivElement> {
   link: string
   subheading: string
   heading: string
-  content: string
+  content: string | React.ReactNode
   image: string // Figma Project URL
   stack: string[] // Stack used
   github?: string // Github Project URL
@@ -82,7 +82,7 @@ export const Project = ({
   useEffect(() => {
     if (!isInView) return
     controls.start("animate")
-  }, [isInView])
+  }, [isInView, controls])
 
   return (
     <div
@@ -144,8 +144,9 @@ export const Project = ({
           animate={controls}
           as="p"
           className=" tracking-wide text-neutral-300 mt-5 max-w-xl lg:max-w-lg leading-[180%]"
-          dangerouslySetInnerHTML={{ __html: content }}
-        />
+        >
+          {content}
+        </Typography>
         <m.ul
           variants={stackVariants}
           custom={4}

@@ -24,7 +24,7 @@ const Projects: FC<ProjectsProps> = () => {
         duration: 0.5,
       },
     }))
-  }, [isTextInView])
+  }, [isTextInView, controls])
 
   return (
     <Wrapper className="text-primary-superlight ">
@@ -33,8 +33,11 @@ const Projects: FC<ProjectsProps> = () => {
         controls={controls}
         className="max-w-xl md:text-center mx-auto w-full"
         subheading={"Featured"}
-        highlight="projects."
-        heading={`Latest projects.`}
+        heading={
+          <>
+            Latest <span className="highlight-text">projects.</span>
+          </>
+        }
       />
       <div id="projects" className="space-y-20 lg:space-y-40 mt-20 lg:mt-40">
         <Project
@@ -46,22 +49,26 @@ const Projects: FC<ProjectsProps> = () => {
           subheading={`Personal project`}
           link={`https://code.dmrk.dev`}
           heading={`code.dmrk.dev`}
-          content={`Code screenshot generator, made in Next.js, highly inspired by
-          <a
-            href="https://carbon.sh"
-            target="_blank"
-            class="text-primary hover:brightness-150 transition ease-out"
-            rel="noreferrer noindex nofollow"
-          >
-            carbon.sh.
-          </a>
-          Personal project, which was made for self-educating and practice
-          purposes. I have utilised monorepo with configs and UI component
-          library under the different packages. The same UI component library is
-          used for the website, you currently reading. I got many ideas on how
-          to it can be improved, there are many features on my mind, hope I
-          would have some time to keep updating it. The source code is
-          open-source and can be found on the github link below.`}
+          content={
+            <>
+              Code screenshot generator, made in Next.js, highly inspired by
+              <a
+                href="https://carbon.sh"
+                target="_blank"
+                className="text-primary hover:brightness-150 transition ease-out"
+                rel="noreferrer noindex nofollow"
+              >
+                {" "}
+                carbon.sh.{" "}
+              </a>
+              Personal project, which was made for self-educating and practice purposes. I have
+              utilised monorepo with configs and UI component library under the different packages.
+              The same UI component library is used for the website, you currently reading. I got
+              many ideas on how to it can be improved, there are many features on my mind, hope I
+              would have some time to keep updating it. The source code is open-source and can be
+              found on the github link below.
+            </>
+          }
           title={"code.dmrk.dev"}
         />
         <Project

@@ -6,7 +6,7 @@ import {
   useAnimationControls,
   useInView,
   useScroll,
-  useTransform,
+  useTransform
 } from "framer-motion"
 import { default as NextImage } from "next/future/image"
 import { FC, useEffect, useRef } from "react"
@@ -38,7 +38,7 @@ const About: FC<AboutProps> = ({ img }) => {
   useEffect(() => {
     if (!isTextInView) return
     controls.start("animate")
-  }, [isTextInView])
+  }, [isTextInView, controls])
 
   return (
     <MotionConfig
@@ -56,26 +56,42 @@ const About: FC<AboutProps> = ({ img }) => {
           ref={textRef}
           className="max-w-lg md:text-center lg:text-left md:mx-auto"
           subheading={"Introduction"}
-          highlight={"myself."}
           bodyClass="text-left"
-          heading={`A little bit about myself.`}
-          body={`My name is Denis and I enjoy building things, I get such a joy from creating something beautiful and entertaining. My journey into web development started from <span class="highlight-md">UI Design</span>, apparently designing interfaces wasn't enough for me, so I decided to go all in on building it. 
-      <br />    
-      <br />    
-          In the web development field, I started as a <span class="highlight-md">WordPress</span> developer, I was building <span class="highlight-md">custom themes, plugins, custom api endpoint</span>, WordPerss is full of possibilities, you can integrate anything.
-<br />
-<br />
-          After <span class="highlight-md">WordPress</span>, I decided to start learning <span class="highlight-md">React, Node.js, Express</span> and all the modern stuff, you need to know to become a web dev.
-          <br />
-          <br />
-
-          My latest projects include marketing web sites of any scale built using SSG frameworks like <span class="highlight-md">Next.js / Gatsby</span> and any kind of <span class="highlight-md">Headless CMS</span> to store all the data, applications using <span class="highlight-md">Prisma</span>, <span class="highlight-md">Supabase/Firebase</span>. 
-          <br />
-          <br />
-          I do enjoy learning new things, I follow the web development trends and read all the news regarding new tech. You should have seen my twitter feed, it's all about web development.
-          
-          
-`}
+          heading={
+            <>
+              About little bit about <span className="highlight-text">myself.</span>
+            </>
+          }
+          body={
+            <>
+              My name is Denis and I enjoy building things, I get such a joy from creating something
+              beautiful and entertaining. My journey into web development started from{" "}
+              <span className="highlight-md">UI Design</span>, apparently designing interfaces
+              wasn&apos;t enough for me, so I decided to go all in on building it.
+              <br />
+              <br />
+              In the web development field, I started as a{" "}
+              <span className="highlight-md">WordPress</span> developer, I was building{" "}
+              <span className="highlight-md">custom themes, plugins, custom api endpoint</span>,
+              WordPerss is full of possibilities, you can integrate anything.
+              <br />
+              <br />
+              After <span className="highlight-md">WordPress</span>, I decided to start learning{" "}
+              <span className="highlight-md">React, Node.js, Express</span> and all the modern
+              stuff, you need to know to become a web dev.
+              <br />
+              <br />
+              My latest projects include marketing web sites of any scale built using SSG frameworks
+              like <span className="highlight-md">Next.js / Gatsby</span> and any kind of{" "}
+              <span className="highlight-md">Headless CMS</span> to store all the data, applications
+              using <span className="highlight-md">Prisma</span>,{" "}
+              <span className="highlight-md">Supabase/Firebase</span>.
+              <br />
+              <br />I do enjoy learning new things, I follow the web development trends and read all
+              the news regarding new tech. You should have seen my twitter feed, it&apos;s all about
+              web development.
+            </>
+          }
         />
         <m.div
           animate={{

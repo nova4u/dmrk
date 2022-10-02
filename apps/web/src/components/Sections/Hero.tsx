@@ -70,9 +70,13 @@ const Hero: FC<HeroProps> = () => {
       <Heading
         subheading={`Front-End Dev / UI Designer`}
         className="mt-32 mx-auto   max-w-2xl"
-        highlight="beautiful"
-        heading={`Let's build something beautiful together.`}
-        body={`I'm Denis, a Front-End Developer who is capable of UI / UX Design. I focus on
+        heading={
+          <>
+            Let&apos;s build something <br />
+            <span className="highlight-text">beautiful</span> together
+          </>
+        }
+        body={`I&apos;m Denis, a Front-End Developer who is capable of UI / UX Design. I focus on
           delievering engaging UI, well-built
           and easy to maintain websites.
         `}

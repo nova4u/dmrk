@@ -1,15 +1,14 @@
 import { Typography } from "@dmrk/ui"
 import clsx from "clsx"
 import { AnimationControls, m, Variants } from "framer-motion"
-import { forwardRef } from "react"
+import React, { forwardRef } from "react"
 
 interface HeadingProps extends React.HTMLAttributes<HTMLDivElement> {
   subheading?: string
   bodyClass?: string
-  heading?: string
+  heading?: string | React.ReactNode
   headingTag?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
-  highlight?: string
-  body?: string
+  body?: string | React.ReactNode
   controls?: AnimationControls
 }
 
@@ -75,15 +74,9 @@ const Heading = forwardRef<HTMLDivElement, HeadingProps>(
               className={clsx("font-bold text-4xl lg:text-5xl  tracking-tight", {
                 "mt-8": subheading,
               })}
-              dangerouslySetInnerHTML={{
-                __html: rest.highlight
-                  ? heading.replace(
-                      rest.highlight,
-                      `<span class="highlight-text">${rest.highlight}</span>`
-                    )
-                  : heading,
-              }}
-            />
+            >
+              {heading}
+            </MotionTypography>
           </>
         )}
         {body && (
@@ -101,10 +94,9 @@ const Heading = forwardRef<HTMLDivElement, HeadingProps>(
               },
               bodyClass
             )}
-            dangerouslySetInnerHTML={{
-              __html: body,
-            }}
-          ></MotionTypography>
+          >
+            {body}
+          </MotionTypography>
         )}
       </div>
     )

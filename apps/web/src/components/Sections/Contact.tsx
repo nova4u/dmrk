@@ -31,7 +31,7 @@ const Contact: FC<ContactProps> = (props) => {
   useEffect(() => {
     if (!isInView) return
     controls.start("animate")
-  }, [isInView])
+  }, [isInView, controls])
 
   const handleSubmit = async (e: FormEvent) => {
     setError(null)
@@ -39,7 +39,7 @@ const Contact: FC<ContactProps> = (props) => {
     e.preventDefault()
 
     if (!formData.name) {
-      setError(`Please don't forget to fill out your name`)
+      setError(`Please don&apos;t forget to fill out your name`)
       return
     }
 
@@ -81,9 +81,12 @@ const Contact: FC<ContactProps> = (props) => {
         controls={controls}
         className=""
         subheading="contact"
-        heading="Always ready to talk."
+        heading={
+          <>
+            Always ready to <span className="highlight-text">talk.</span>
+          </>
+        }
         body={`The form is highly interactive, I do suggest you fill it out!`}
-        highlight="talk."
       />
 
       <div className="max-w-xl mt-20 mx-auto relative">
