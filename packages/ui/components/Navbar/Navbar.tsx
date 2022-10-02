@@ -1,9 +1,9 @@
-import React, { FC } from "react"
 import clsx from "clsx"
-import Logotype from "../Logotype/Logotype"
+import React, { FC } from "react"
 import Chevron from "../Icons/Chevron"
 import Github from "../Icons/Github"
 import Linkedin from "../Icons/Linkedin"
+import Logotype from "../Logotype/Logotype"
 
 interface NavbarProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -19,6 +19,7 @@ const Navbar: FC<NavbarProps> = ({ className, ...rest }) => {
             target="_blank"
             rel="noreferrer nofollow noindex"
           >
+            <span className="sr-only">Check out this project on github</span>
             <Github className={iconClasses} />
           </a>
           <a
@@ -26,6 +27,7 @@ const Navbar: FC<NavbarProps> = ({ className, ...rest }) => {
             target="_blank"
             rel="noreferrer nofollow noindex"
           >
+            <span className="sr-only">Go to author&apos;s linkedin profile page</span>
             <Linkedin className={iconClasses} />
           </a>
         </div>

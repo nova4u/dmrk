@@ -126,11 +126,13 @@ export const Project = ({
           >
             {github && (
               <a href={github} target="_blank" rel="noreferrer noindex nofollow">
+                <span className="sr-only">Check out this project on github</span>
                 <Github className="w-6 h-6 brightness-75 hover:brightness-100 transition hover:-translate-y-px" />
               </a>
             )}
             {figma && (
               <a href={figma} target="_blank" rel="noreferrer noindex nofollow">
+                <span className="sr-only">Check out this project&apos;s figma file</span>
                 <Figma className="w-6 h-6 hover:brightness-100 brightness-50 transition hover:-translate-y-px" />
               </a>
             )}
@@ -147,7 +149,7 @@ export const Project = ({
         >
           {content}
         </Typography>
-        <m.ul
+        <m.div
           variants={stackVariants}
           custom={4}
           initial={"hidden"}
@@ -159,7 +161,7 @@ export const Project = ({
             const logo = logos.find((logo) => logo.name === tag)
             if (!logo) return
             return (
-              <m.li
+              <m.div
                 variants={{
                   hidden: {
                     y: 20,
@@ -178,10 +180,10 @@ export const Project = ({
                 key={i}
               >
                 <NextImage src={logo.src} fill alt={logo.alt} />
-              </m.li>
+              </m.div>
             )
           })}
-        </m.ul>
+        </m.div>
       </div>
       <m.div
         initial={"hidden"}

@@ -82,7 +82,7 @@ const Hero: FC<HeroProps> = () => {
         `}
       />
       <Link href="#contact" scroll>
-        <m.a
+        <m.button
           initial={{
             y: 40,
             opacity: 0,
@@ -99,7 +99,7 @@ const Hero: FC<HeroProps> = () => {
           className="mt-7 bg-gradient-to-b from-primary to-primary-dark shadow-xl shadow-primary/5 text-primary-darkest self-center hover:-translate-y-px px-4 py-2 font-medium hover:brightness-125 transition ease-out cursor-pointer  hover:shadow-none rounded-md inline-block"
         >
           Contact Me
-        </m.a>
+        </m.button>
       </Link>
     </Wrapper>
   )

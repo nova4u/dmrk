@@ -1,11 +1,11 @@
-import React, { KeyboardEvent } from "react"
-import Head from "next/head"
-import { NextPage } from "next"
-import { Wrapper, Panel, Switch, Menu, Typography, Button, Navbar } from "@dmrk/ui"
+import { Button, Menu, Navbar, Panel, Switch, Typography, Wrapper } from "@dmrk/ui"
 import { Settings, Text } from "@dmrk/ui/icons"
-import { CodeEditor } from "../components/"
-import CodeSettings from "../../settings.json"
 import ImageConverter from "@lib/ImageConverter"
+import { NextPage } from "next"
+import Head from "next/head"
+import React, { KeyboardEvent } from "react"
+import CodeSettings from "../../settings.json"
+import { CodeEditor } from "../components/"
 
 const { languages, fontFamily, fontSizes, headlines } = CodeSettings
 
@@ -99,7 +99,7 @@ export const Docs: NextPage = () => {
   }
 
   return (
-    <Wrapper className="py-14 relative overflow-hidden">
+    <Wrapper className="py-14 relative overflow-hidden" padding="none">
       <Seo />
       <Navbar className="font-mono" />
       <Circle className="top-0 left-1/2 absolute -translate-x-1/2 animate-pulse -z-10" />
