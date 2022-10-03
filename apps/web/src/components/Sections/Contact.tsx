@@ -39,7 +39,7 @@ const Contact: FC<ContactProps> = (props) => {
     e.preventDefault()
 
     if (!formData.name) {
-      setError(`Please don&apos;t forget to fill out your name`)
+      setError(`Please don't forget to fill out your name`)
       return
     }
 
