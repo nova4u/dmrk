@@ -26,40 +26,33 @@ body {
 }
 
 .gradient-box {
-  --gradientDegress: 120deg;
-  @apply relative;
+  --animation: animateBg 7s linear alternate infinite;
+  @apply relative p-px rounded-md;
 }
 
-@media not all and (min-resolution: 0.001dpcm) {
+@supports (-webkit-touch-callout: none) {
   .gradient-box {
-    --gradientDegress: 90deg;
+    --animation: none;
   }
 }
 
-.gradient-box::after {
-  @apply rounded-[inherit] inset-0 absolute -z-10 -m-px transform-gpu;
+.gradient-box {
   --gradient: linear-gradient(
-    var(--gradientDegress),
-    #00ceff 0%,
-    rgba(203, 105, 237, 0.1) 22.16%,
-    rgba(203, 105, 237, 0.02) 39.35%,
-    #15bbe2 52.89%,
-    rgba(203, 105, 237, 0.04) 64.35%,
-    rgba(203, 105, 237, 0.1) 78.93%,
-    #15bbe2 100%
+    120deg,
+    rgba(21, 187, 226, 0) 0.15%,
+    rgba(21, 187, 226, 0.71) 21.93%,
+    rgba(21, 103, 226, 0.1) 56.74%,
+    rgba(109, 136, 233, 0.77) 80.64%,
+    rgba(112, 143, 234, 0) 99.9%
   );
-  content: "";
-  will-change: background-position;
-  background-image: var(--gradient);
   background-size: 200%;
-  background-position: 0 100%;
-  animation: animateBg 7s linear alternate-reverse infinite;
+  will-change: background-position;
+  background-position: 0% 100%;
+  animation: var(--animation);
+  background-image: var(--gradient);
 }
 
 @keyframes animateBg {
-  from {
-    background-position: 0 100%;
-  }
   to {
     background-position: 100% 200%;
   }

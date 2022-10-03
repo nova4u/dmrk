@@ -1,7 +1,12 @@
-import { About, Contact, Hero, Projects } from "@components/Sections"
+import { Hero } from "@components/Sections"
 import { domAnimation, LazyMotion } from "framer-motion"
 import { NextPage } from "next"
+import dynamic from "next/dynamic"
 import Head from "next/head"
+
+const About = dynamic(() => import("../components/Sections/About"))
+const Projects = dynamic(() => import("../components/Sections/Projects"))
+const Contact = dynamic(() => import("../components/Sections/Contact"))
 
 const Index: NextPage = () => {
   return (

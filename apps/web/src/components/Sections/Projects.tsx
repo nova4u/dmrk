@@ -71,16 +71,7 @@ const Projects: FC<ProjectsProps> = () => {
           }
           title={"code.dmrk.dev"}
         />
-        <Project
-          layout="image-right"
-          image={"/projects/retrycom.jpeg"}
-          stack={["wordpress", "gatsby", "tailwind"]}
-          subheading={`Marketing website`}
-          link={`https://retry.com`}
-          heading={`retry.com`}
-          content={`Basic marketing projects that consists of two products. WordPress is used as a Headless CMS, to source all the data. Everything is being controlled from the WordPress, all the info is being sourced from there. I used the Advanced Custom Fields with the combination of flexible fields, to build the page layout on the fly. Basically the project consists of different content sections, that are highly customizable from the WordPress admin panel. Easy to use, when you need to quickly push new marketing page. `}
-          title={"code.dmrk.dev"}
-        />
+
         <Project
           layout="image-right"
           image={"/projects/pointofsalenet.jpeg"}
@@ -93,10 +84,20 @@ const Projects: FC<ProjectsProps> = () => {
         />
         <Project
           layout="image-right"
+          image={"/projects/retrycom.jpeg"}
+          stack={["wordpress", "gatsby", "tailwind"]}
+          subheading={`Marketing website`}
+          link={`https://retry.com`}
+          heading={`retry.com`}
+          content={`Basic marketing projects that consists of two products. WordPress is used as a Headless CMS, to source all the data. Everything is being controlled from the WordPress, all the info is being sourced from there. I used the Advanced Custom Fields with the combination of flexible fields, to build the page layout on the fly. Basically the project consists of different content sections, that are highly customizable from the WordPress admin panel. Easy to use, when you need to quickly push new marketing page. `}
+          title={"code.dmrk.dev"}
+        />
+        <Project
+          layout="image-right"
           image={"/projects/erplycom.jpeg"}
           stack={["wordpress", "tailwind"]}
           subheading={`Marketing website`}
-          link={`https://retry.com`}
+          link={`https://erply.com`}
           heading={`erply.com`}
           content={`This is the main marketing website for the ERPLY. It consists of more than 1000 pages, the idea was to rebuild an old website and keep all the blog posts. First we have created a design of the main page, custom templates for different types of pages, it consists of more than 10 templates overall. The website is built as a WordPress custom theme, built from scratch, with lots of integrations and customizations. I have worked on 3 custom plugins, used internally in the WordPress admin menu. Highly customizable website thanks to Advanced Custom Fields, pretty much 95% of the content is being connected to the admin panel, where it is possible to change all the content.`}
           title={"code.dmrk.dev"}

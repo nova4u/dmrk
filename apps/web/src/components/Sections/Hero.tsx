@@ -1,8 +1,8 @@
 import { Background, Heading } from "@components/index"
 import { Navbar, Wrapper } from "@dmrk/ui"
 import { logos } from "@lib/data"
-import { m, useScroll, useTransform } from "framer-motion"
-import { default as NextImage } from "next/image"
+import { m, useScroll, useTransform, useWillChange } from "framer-motion"
+import { default as NextImage } from "next/future/image"
 import Link from "next/link"
 import { FC, useRef } from "react"
 
@@ -14,6 +14,7 @@ const Hero: FC<HeroProps> = () => {
     target: section,
     offset: ["start start", "end start"],
   })
+  const willChange = useWillChange()
   let y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
 
   return (
@@ -26,6 +27,7 @@ const Hero: FC<HeroProps> = () => {
       <m.div
         style={{
           y,
+          willChange,
         }}
         initial={{
           x: -60,
@@ -38,7 +40,7 @@ const Hero: FC<HeroProps> = () => {
         transition={{
           duration: 3,
         }}
-        className="absolute transition ease-out top-0  left-0  w-full h-auto -z-10"
+        className="absolute  top-5 -left-1/2 lg:top-0  md:left-0  w-full h-auto -z-10"
       >
         <Background />
       </m.div>
@@ -48,20 +50,25 @@ const Hero: FC<HeroProps> = () => {
             initial={{ opacity: 0, y: -20, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{
-              // ease: "easeOut",
+              ease: "easeOut",
               delay: 0.07 * i,
+            }}
+            style={{
+              willChange,
             }}
             className="bg-primary-darkest/95 rounded-md"
             key={i}
           >
-            <div className="gradient-box py-2 px-2 h-auto rounded-md bg-primary-darkest/95 flex items-center">
-              <NextImage
-                src={logo.src}
-                width={logo.width}
-                height={28}
-                className=" flex-grow w-auto h-5 md:h-7 "
-                alt={logo.alt}
-              />
+            <div className="p-px rounded-md   gradient-box flex bg-transparent ">
+              <div className="py-2 px-2 flex items-center w-auto h-auto bg-primary-darkest rounded-md ">
+                <NextImage
+                  src={logo.src}
+                  width={logo.width}
+                  height={28}
+                  className="flex-grow w-auto h-5 md:h-7"
+                  alt={logo.alt}
+                />
+              </div>
             </div>
           </m.div>
         ))}

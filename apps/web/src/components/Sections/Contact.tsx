@@ -93,85 +93,88 @@ const Contact: FC<ContactProps> = (props) => {
       />
 
       <div className="max-w-xl mt-20 mx-auto relative">
-        <form
-          className="p-10 bg-primary-darkest gradient-box w-auto  rounded-lg"
-          onSubmit={handleSubmit}
-        >
-          <div className="space-y-8">
-            <FormField
-              as="input"
-              type="text"
-              name="name"
-              placeholder="Name"
-              className={clsx({
-                "ring-emerald-600 focus:ring-emerald-600 ring-1": formData.name,
-              })}
-              value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            />
-            <FormField
-              as="input"
-              className={clsx({
-                "ring-rose-600 focus:ring-rose-600 ring-1 animate-pulse":
-                  !emailValidation(formData.email) && formData.email,
-                "ring-emerald-600 focus:ring-emerald-600 ring-1": emailValidation(formData.email),
-              })}
-              type="text"
-              name="email"
-              placeholder="Contact Email"
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              value={formData.email}
-            />
-            <FormField
-              as="textarea"
-              name="message"
-              className={clsx("mb-4", {
-                "ring-emerald-600 focus:ring-emerald-600 ring-1": formData.message,
-              })}
-              placeholder="Message"
-              value={formData.message}
-              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-            />
-          </div>
-          <AnimatePresence initial={false}>
-            {error !== null && (
-              <m.div
-                initial={{ opacity: 0, height: 0 }}
-                exit={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                transition={{
-                  type: "spring",
-                  duration: 0.6,
-                }}
-                key={error}
-                className="font-medium rounded-md bg-rose-900/30 border border-rose-600/20 text-rose-400 overflow-hidden "
-              >
-                <div className="p-2.5">{error}</div>
-              </m.div>
-            )}
-          </AnimatePresence>
-          <AnimatePresence initial={false}>
-            {success && (
-              <m.div
-                initial={{ opacity: 0, height: 0 }}
-                exit={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                transition={{
-                  type: "spring",
-                  duration: 0.6,
-                }}
-                key={error}
-                className="font-medium rounded-md bg-emerald-900/30 border border-emerald-600/20 text-emerald-400 overflow-hidden "
-              >
-                <div className="p-2.5">
-                  Thanks! Your message has been delievered. I will reply ASAP.
-                </div>
-              </m.div>
-            )}
-          </AnimatePresence>
+        <div className="gradient-box">
+          <form
+            className="p-10 bg-primary-darkest  w-auto  rounded-[inherit]"
+            onSubmit={handleSubmit}
+          >
+            <div className="space-y-8">
+              <FormField
+                as="input"
+                type="text"
+                name="name"
+                placeholder="Name"
+                className={clsx({
+                  "ring-emerald-600 focus:ring-emerald-600 ring-1": formData.name,
+                })}
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              />
+              <FormField
+                as="input"
+                className={clsx({
+                  "ring-rose-600 focus:ring-rose-600 ring-1 animate-pulse":
+                    !emailValidation(formData.email) && formData.email,
+                  "ring-emerald-600 focus:ring-emerald-600 ring-1": emailValidation(formData.email),
+                })}
+                type="text"
+                name="email"
+                placeholder="Contact Email"
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                value={formData.email}
+              />
+              <FormField
+                as="textarea"
+                name="message"
+                className={clsx("mb-4", {
+                  "ring-emerald-600 focus:ring-emerald-600 ring-1": formData.message,
+                })}
+                placeholder="Message"
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+              />
+            </div>
+            <AnimatePresence initial={false}>
+              {error !== null && (
+                <m.div
+                  initial={{ opacity: 0, height: 0 }}
+                  exit={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  transition={{
+                    type: "spring",
+                    duration: 0.6,
+                  }}
+                  key={error}
+                  className="font-medium rounded-md bg-rose-900/30 border border-rose-600/20 text-rose-400 overflow-hidden "
+                >
+                  <div className="p-2.5">{error}</div>
+                </m.div>
+              )}
+            </AnimatePresence>
+            <AnimatePresence initial={false}>
+              {success && (
+                <m.div
+                  initial={{ opacity: 0, height: 0 }}
+                  exit={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  transition={{
+                    type: "spring",
+                    duration: 0.6,
+                  }}
+                  key={error}
+                  className="font-medium rounded-md bg-emerald-900/30 border border-emerald-600/20 text-emerald-400 overflow-hidden "
+                >
+                  <div className="p-2.5">
+                    Thanks! Your message has been delievered. I will reply ASAP.
+                  </div>
+                </m.div>
+              )}
+            </AnimatePresence>
 
-          <Button className="w-full hover:-translate-y-px mt-4 ">Send</Button>
-        </form>
+            <Button className="w-full hover:-translate-y-px mt-4 ">Send</Button>
+          </form>
+        </div>
+
         <m.div
           animate={{
             opacity: formData.email ? 1 : 0,
@@ -205,14 +208,14 @@ const Contact: FC<ContactProps> = (props) => {
       </div>
       <m.div
         className="absolute top-20 left-1/5 w-full h-full -z-10"
-        whileInView={{ x: -90 }}
-        initial={{ x: 0 }}
-        transition={{
-          // @ts-ignore Wrong Types on framer motion
-          repeat: "Infinity" as number,
-          repeatType: "reverse",
-          duration: 20,
-        }}
+        // whileInView={{ x: -90 }}
+        // initial={{ x: 0 }}
+        // transition={{
+        //   // @ts-ignore Wrong Types on framer motion
+        //   repeat: "Infinity" as number,
+        //   repeatType: "reverse",
+        //   duration: 20,
+        // }}
       >
         <Background />
       </m.div>

@@ -17,17 +17,12 @@ export const logos = [
     alt: "Gatsby logo",
     width: 107.33,
   },
+
   {
-    name: "astro",
-    src: "/logos2/astro.svg",
-    alt: "Astro logo",
-    width: 82.88,
-  },
-  {
-    name: "framer",
-    src: "/logos2/framer-motion.svg",
-    alt: "framer logo",
-    width: 93.69,
+    name: "graphql",
+    src: "/logos2/graphql-white.svg",
+    alt: "graphql logo",
+    width: 100,
   },
   {
     name: "turborepo",
