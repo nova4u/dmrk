@@ -81,8 +81,8 @@ const About: FC<AboutProps> = ({ img }) => {
               stuff, you need to know to become a web dev.
               <br />
               <br />
-              My latest projects include marketing web sites of any scale built using SSG frameworks
-              like <span className="highlight-md">Next.js / Gatsby</span> and any kind of{" "}
+              My most recent projects include marketing web sites of any scale built using SSG
+              frameworks like <span className="highlight-md">Next.js / Gatsby</span> and any kind of{" "}
               <span className="highlight-md">Headless CMS</span> to store all the data, applications
               using <span className="highlight-md">Prisma</span>,{" "}
               <span className="highlight-md">Supabase/Firebase</span>.

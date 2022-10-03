@@ -35,7 +35,7 @@ const Projects: FC<ProjectsProps> = () => {
         subheading={"Featured"}
         heading={
           <>
-            Latest <span className="highlight-text">projects.</span>
+            Most recent <span className="highlight-text">projects.</span>
           </>
         }
       />
