@@ -51,12 +51,8 @@ html {
   }
   .outline {
     all: unset;
-    @apply px-4 py-1 font-medium hover:brightness-125 transition ease-out text-emerald-400 hover:shadow-none rounded-md shadow-primary;
-    background: linear-gradient(
-          theme(colors.neutral.800),
-          theme(colors.neutral.800)
-        )
-        padding-box,
+    @apply px-4 py-1 font-medium hover:brightness-125  text-emerald-400  rounded-md;
+    background: linear-gradient(theme(colors.neutral.800), theme(colors.neutral.800)) padding-box,
       linear-gradient(
           259.31deg,
           #0c6449 0%,

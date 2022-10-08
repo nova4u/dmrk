@@ -178,6 +178,7 @@ export const Docs: NextPage = () => {
         />
         <Menu
           openOnMouseOver
+          onOpenAutoFocus={(e) => e.preventDefault()}
           containerClasses={`ml-auto`}
           className="ml-auto"
           showLabel={true}
@@ -191,7 +192,7 @@ export const Docs: NextPage = () => {
               el: (data) => (
                 <button
                   onClick={downloadAsSvg}
-                  className="py-1 px-3    rounded-md transition hover:text-emerald-500 block  hocus:text-emerald-500 hocus:outline-none hocus:ring-1  hocus:ring-emerald-500 "
+                  className="py-1 px-3    rounded-md transition hover:text-emerald-500 block   hocus:outline-none hocus:bg-emerald-600 hocus:text-emerald-50  hocus:ring-emerald-500 w-full text-left "
                   {...data}
                 >
                   Export as SVG
@@ -202,7 +203,7 @@ export const Docs: NextPage = () => {
               el: (data) => (
                 <button
                   onClick={downloadAsPng}
-                  className={`py-1 px-3    rounded-md transition hover:text-emerald-500 block  hocus:text-emerald-500 hocus:outline-none hocus:ring-1  hocus:ring-emerald-500 `}
+                  className={`py-1 px-3    rounded-md transition hover:text-emerald-500 block   hocus:outline-none hocus:bg-emerald-600 hocus:text-emerald-50  hocus:ring-emerald-500 w-full text-left `}
                   {...data}
                 >
                   Export as PNG
@@ -213,7 +214,7 @@ export const Docs: NextPage = () => {
               el: (data) => (
                 <button
                   onClick={copyToClipboard}
-                  className={`py-1 px-3    rounded-md transition hover:text-emerald-500 block  hocus:text-emerald-500 hocus:outline-none hocus:ring-1  hocus:ring-emerald-500 `}
+                  className={`py-1 px-3    rounded-md transition hover:text-emerald-500 block   hocus:outline-none hocus:bg-emerald-600 hocus:text-emerald-50  hocus:ring-emerald-500 w-full text-left `}
                   {...data}
                 >
                   Copy to Clipboard

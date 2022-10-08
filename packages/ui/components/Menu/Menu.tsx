@@ -109,7 +109,7 @@ const Menu = <IncomingOptions,>({
         <Popover.Portal>
           <Popover.Content
             className={clsx(
-              "bg-neutral-800 border border-white/10 rounded-lg px-3 py-3   shadow-xl text-neutral-200   max-h-80 overflow-y-scroll w-max max-w-sm space-y-1",
+              "bg-neutral-800 border border-white/10 rounded-lg px-3 py-3   shadow-xl text-neutral-200   max-h-80 overflow-y-scroll w-max max-w-sm space-y-1 animate-slideDownAndFade origin-[var(--radix-popover-content-transform-origin)]",
               {
                 hidden: options.length === 0,
               }
