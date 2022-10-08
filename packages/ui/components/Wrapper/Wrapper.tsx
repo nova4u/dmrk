@@ -1,12 +1,14 @@
 import clsx from "clsx"
-import React, { HTMLAttributes } from "react"
+import React from "react"
 
-interface WrapperProps extends HTMLAttributes<HTMLElement> {
+interface WrapperProps
+  extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   padding?: "default" | "top" | "bottom" | "none"
+  id?: string
 }
 
-const Wrapper = React.forwardRef<HTMLElement, WrapperProps>(
-  ({ children, className, padding = "default", ...rest }, ref) => {
+const Wrapper = React.forwardRef<HTMLDivElement, WrapperProps>(
+  ({ children, id, className, padding = "default", ...rest }, ref) => {
     return (
       <section
         className={clsx({
@@ -14,6 +16,7 @@ const Wrapper = React.forwardRef<HTMLElement, WrapperProps>(
           "pt-24 pd:pt-32 lg:pt-36": padding === "top",
           "pb-24 pd:pb-32 lg:pb-36": padding === "bottom",
         })}
+        {...{ id }}
         ref={ref}
         {...rest}
       >
