@@ -104,7 +104,7 @@ export const Project = ({
         >
           {subheading}
         </Typography>
-        <a href="https://code.dmrk.dev" target="_blank" rel="noreferrer">
+        <a href={link} target="_blank" rel="noreferrer">
           <Typography
             variants={variants}
             custom={1}

@@ -39,7 +39,7 @@ const Projects: FC<ProjectsProps> = () => {
           </>
         }
       />
-      <div id="projects" className="space-y-20 lg:space-y-40 mt-20 lg:mt-40">
+      <div className="space-y-20 lg:space-y-40 mt-20 lg:mt-40">
         <Project
           layout="image-right"
           image={"/projects/codedmrkdev.jpeg"}
