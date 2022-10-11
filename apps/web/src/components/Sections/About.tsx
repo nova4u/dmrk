@@ -64,9 +64,9 @@ const About: FC<AboutProps> = ({ img }) => {
           }
           body={
             <>
-              My name is Denis and I enjoy building things, I get such a joy from creating something
-              beautiful and entertaining. My journey into web development started from{" "}
-              <span className="highlight-md">UI Design</span>, apparently designing interfaces
+              My name is Denis Marushchak and I enjoy building things, I get such a joy from
+              creating something beautiful and entertaining. My journey into web development started
+              from <span className="highlight-md">UI Design</span>, apparently designing interfaces
               wasn&apos;t enough for me, so I decided to go all in on building it.
               <br />
               <br />
