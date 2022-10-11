@@ -16,7 +16,7 @@ const Switch: FC<SwitchProps> = ({ label, checked, setChecked }) => {
         onCheckedChange={(v) => setChecked(v)}
       >
         <SwitchPrimitive.Thumb
-          // @ts-expect-error
+          // @ts-ignore
           id="s1"
           className="[&[data-state='checked']]:translate-x-3 md:[&[data-state='checked']]:translate-x-6 [&[data-state='checked']]:bg-neutral-100 bg-white rounded-full w-3 h-3 md:w-4 md:h-4 block transition ease-out"
         />
