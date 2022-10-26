@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@dmrk/ui": "workspace:*",
+    "@vercel/analytics": "^0.1.1",
     "autoprefixer": "^10.4.12",
     "clsx": "^1.2.1",
     "framer-motion": "^7.5.1",
