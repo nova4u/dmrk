@@ -11,6 +11,7 @@
   "dependencies": {
     "@dmrk/ui": "workspace:*",
     "@uiw/react-textarea-code-editor": "2.0.3",
+    "@vercel/analytics": "^0.1.1",
     "clsx": "^1.2.1",
     "next": "12.3.0",
     "next-compose-plugins": "^2.2.1",

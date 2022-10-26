@@ -24,6 +24,7 @@ importers:
       '@types/node': ^17.0.12
       '@types/react': 18.0.17
       '@uiw/react-textarea-code-editor': 2.0.3
+      '@vercel/analytics': ^0.1.1
       autoprefixer: ^10.4.12
       clsx: ^1.2.1
       eslint: 7.32.0
@@ -41,6 +42,7 @@ importers:
     dependencies:
       '@dmrk/ui': link:../../packages/ui
       '@uiw/react-textarea-code-editor': 2.0.3_biqbaboplfbrettd7655fr4n2y
+      '@vercel/analytics': 0.1.1_react@18.2.0
       clsx: 1.2.1
       next: 12.3.0_ir3quccc6i62x6qn6jjhyjjiey
       next-compose-plugins: 2.2.1
