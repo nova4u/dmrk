@@ -6,6 +6,12 @@ export const logos = [
     width: 214.66,
   },
   {
+    name: "typescript",
+    src: "/logos2/typescript.svg",
+    alt: "typescript logo",
+    width: 10,
+  },
+  {
     name: "nextjs",
     src: "/logos2/nextjs.svg",
     alt: "Nextjs logo",
