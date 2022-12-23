@@ -41,6 +41,16 @@ const Projects: FC<ProjectsProps> = () => {
       />
       <div className="space-y-20 lg:space-y-40 mt-20 lg:mt-40">
         <Project
+            layout="image-right"
+            image={"/projects/pdfgeneratorapi.jpeg"}
+            stack={["nextjs", "tailwind",  "typescript", "wordpress"]}
+            subheading={`Marketing website`}
+            link={`https://pdfgeneratorapi.com`}
+            heading={`pdfgeneratorapi.com`}
+            content={`The website is powered by WordPress as a headless CMS. I have utilized Advanced Custom Fields with flexible fields to enable dynamic page layout creation from the WordPress admin panel and. This allows for easy customization and quick deployment of new marketing pages. The website features customizable content sections that can be easily managed from the WordPress backend. With this setup, it's easy to keep your marketing efforts up to date and effective.`}
+            title={"pdfgeneratorapi.com"}
+        />
+        <Project
           layout="image-right"
           image={"/projects/codedmrkdev.jpeg"}
           github="https://github.com/nova4u/dmrk"
@@ -73,6 +83,16 @@ const Projects: FC<ProjectsProps> = () => {
         />
 
         <Project
+            layout="image-right"
+            image={"/projects/retrycom.jpg"}
+            stack={["wordpress", "gatsby", "tailwind"]}
+            subheading={`Marketing website`}
+            link={`https://retry.com`}
+            heading={`retry.com`}
+            content={`Basic marketing projects that consists of two products. WordPress is used as a Headless CMS, to source all the data. Everything is being controlled from the WordPress, all the info is being sourced from there. I used the Advanced Custom Fields with the combination of flexible fields, to build the page layout on the fly. Basically the project consists of different content sections, that are highly customizable from the WordPress admin panel. Easy to use, when you need to quickly push new marketing page. `}
+            title={"code.dmrk.dev"}
+        />
+        <Project
           layout="image-right"
           image={"/projects/pointofsalenet.jpeg"}
           stack={["wordpress", "gatsby", "tailwind", "framer"]}
@@ -80,16 +100,6 @@ const Projects: FC<ProjectsProps> = () => {
           link={`https://pointofsale.net`}
           heading={`pointofsale.net`}
           content={`Another marketing page for the point of sale product, using WordPress as a Headless CMS with a combition of Advanced Custom Fields to create powerful, highly adjustable layouts. Using Gatsby to source all the data from the WordPress on render, headers, footers, all the text contents, everything is coming from the WordPress. The projects contains 3 templates, one for building marketing pages, which consist of many reusable content blocks, where you can change the order or any content inside. Blog post template for the posts, and another product template for the products displayed.`}
-          title={"code.dmrk.dev"}
-        />
-        <Project
-          layout="image-right"
-          image={"/projects/retrycom.jpeg"}
-          stack={["wordpress", "gatsby", "tailwind"]}
-          subheading={`Marketing website`}
-          link={`https://retry.com`}
-          heading={`retry.com`}
-          content={`Basic marketing projects that consists of two products. WordPress is used as a Headless CMS, to source all the data. Everything is being controlled from the WordPress, all the info is being sourced from there. I used the Advanced Custom Fields with the combination of flexible fields, to build the page layout on the fly. Basically the project consists of different content sections, that are highly customizable from the WordPress admin panel. Easy to use, when you need to quickly push new marketing page. `}
           title={"code.dmrk.dev"}
         />
         <Project
