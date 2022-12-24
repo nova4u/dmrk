@@ -84,7 +84,7 @@ const Hero: FC<HeroProps> = () => {
           </>
         }
         body={`I'm Denis Marushchak, a Front-End Developer who is capable of UI / UX Design. I focus on
-          delievering engaging UI, well-built
+          delivering engaging UI, well-built
           and easy to maintain websites.
         `}
       />
