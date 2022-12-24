@@ -17,7 +17,7 @@ const emailValidation = (email: string) => {
   return pattern.test(email)
 }
 
-const Contact: FC<ContactProps> = (props) => {
+const Contact: FC<ContactProps> = () => {
   const [formData, setFormData] = React.useState(__DEFAULT_FORM_DATA__)
   const [error, setError] = React.useState<string | null>(null)
   const [success, setSuccess] = React.useState(false)
@@ -165,7 +165,7 @@ const Contact: FC<ContactProps> = (props) => {
                   className="font-medium rounded-md bg-emerald-900/30 border border-emerald-600/20 text-emerald-400 overflow-hidden "
                 >
                   <div className="p-2.5">
-                    Thanks! Your message has been delievered. I will reply ASAP.
+                    Thanks! Your message has been delivered. I will reply ASAP.
                   </div>
                 </m.div>
               )}

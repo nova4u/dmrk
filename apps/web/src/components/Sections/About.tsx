@@ -73,7 +73,7 @@ const About: FC<AboutProps> = ({ img }) => {
               In the web development field, I started as a{" "}
               <span className="highlight-md">WordPress</span> developer, I was building{" "}
               <span className="highlight-md">custom themes, plugins, custom api endpoint</span>,
-              WordPerss is full of possibilities, you can integrate anything.
+              WordPress is full of possibilities, you can integrate anything.
               <br />
               <br />
               After <span className="highlight-md">WordPress</span>, I decided to start learning{" "}
