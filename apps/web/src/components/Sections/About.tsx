@@ -64,32 +64,25 @@ const About: FC<AboutProps> = ({ img }) => {
           }
           body={
             <>
-              My name is Denis Marushchak and I enjoy building things, I get such a joy from
-              creating something beautiful and entertaining. My journey into web development started
-              from <span className="highlight-md">UI Design</span>, apparently designing interfaces
-              wasn&apos;t enough for me, so I decided to go all in on building it.
+              My name is Denis Marushchak and I am a web developer with a passion for creating and building engaging online experiences.
+              My journey in the field started with  <span className={"highlight-md"}>UI design</span> and eventually
+              led me to <span className={"highlight-md"}>full-stack web development</span>,
+              where I have gained expertise in technologies such as <span className={"highlight-md"}>React, Node.js, and Express</span>.
               <br />
               <br />
-              In the web development field, I started as a{" "}
-              <span className="highlight-md">WordPress</span> developer, I was building{" "}
-              <span className="highlight-md">custom themes, plugins, custom api endpoint</span>,
-              WordPress is full of possibilities, you can integrate anything.
+              I have a strong background in <span className={"highlight-md"}>WordPress development</span>,
+              including custom theme and plugin creation as well as API endpoints development.
+              My recent projects  includes  applications built with N<span className={"highlight-md"}>ext.js,
+              Gatsby, Prisma, WordPress as a Headless CMSs</span> and other tech, marketing websites using SSG frameworks like Gatsby, Next.js.
+              I have experience writing tests using tools such as <span className={"highlight-md"}>Jest, Cypress, and Playwright</span> to ensure the quality and reliability
+              of my code. My skillset includes working with custom APIs, combining data from multiple endpoints,
+              implementing authorization and filtering, ensuring efficient API calls through techniques like caching and response validation,
+              and more.
               <br />
               <br />
-              After <span className="highlight-md">WordPress</span>, I decided to start learning{" "}
-              <span className="highlight-md">React, Node.js, Express</span> and all the modern
-              stuff, you need to know to become a web dev.
-              <br />
-              <br />
-              My most recent projects include marketing web sites of any scale built using SSG
-              frameworks like <span className="highlight-md">Next.js / Gatsby</span> and any kind of{" "}
-              <span className="highlight-md">Headless CMS</span> to store all the data, applications
-              using <span className="highlight-md">Prisma</span>,{" "}
-              <span className="highlight-md">Supabase/Firebase</span>.
-              <br />
-              <br />I do enjoy learning new things, I follow the web development trends and read all
-              the news regarding new tech. You should have seen my twitter feed, it&apos;s all about
-              web development.
+              As a continuous learner, I am always seeking to stay up-to-date on the latest developments and trends in the field.
+              I am dedicated to constantly improving my skills and knowledge and believe in the importance of staying current in this
+              fast-paced industry.
             </>
           }
         />
